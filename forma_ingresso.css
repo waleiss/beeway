@@ -1,0 +1,105 @@
+.container#ingresso{
+	background-color: gray;
+	border: transparent;
+	width: 500px;
+	height: 150px;
+	margin: 50px;
+	display: flex;
+	border-radius: 10px;
+	align-content: center;
+	align-items: center;
+	margin: 0 auto;
+	color: white;
+	position: relative;
+}
+
+.forma{
+	border-radius: 100%;
+	background-color: white;
+	width: 10px;
+	height: 10px;
+}
+
+.forma#_1{
+	margin-top: 150px;
+	margin-left: 250px;
+}
+
+.forma#_2{
+	margin-top: 110px;
+	margin-left: -10px;
+}
+
+.forma#_3{
+	margin-top: 70px;
+	margin-left: -10px;
+}
+
+.forma#_4{
+	margin-top: 30px;
+	margin-left: -10px;
+}
+
+.forma#_5{
+	margin-top: -10px;
+	margin-left: -10px;
+}
+
+.forma#_6{
+	margin-top: -50px;
+	margin-left: -10px;
+}
+
+.forma#_7{
+	margin-top: -90px;
+	margin-left: -10px;
+}
+
+.forma#_8{
+	margin-top: -130px;
+	margin-left: -10px;
+}
+
+p#dados{
+	font-size: 20px;
+	margin-left: 30px;
+	margin-top: -50px;
+}
+
+p#ingresso{
+	margin: 35px;
+}
+
+p#data{
+	margin-left: -200px;
+	margin-top: -50px;
+}
+
+p#local{
+	margin-left: -50px;
+	margin-top: 80px;
+}
+
+.lateral#rigth{
+	background-color: white;
+	border-radius: 100%;
+	width: 20px;
+	height: 20px;
+	margin-left: -340px;
+}
+
+.lateral{
+	background-color: white;
+	border-radius: 100%;
+	width: 20px;
+	height: 20px;
+	display: flex;
+}
+
+.lateral#left{
+	margin-left: -522px;
+}
+
+.lateral#rigth{
+	margin-left: 163px;
+}
