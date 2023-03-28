@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<html lang="pt-br"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Home</title>
+    <link rel="stylesheet" href="todos.eventos.css">
+	<link rel="stylesheet" href="home.css">
+</head>
+<body>
+	<header>
+		<!-- <div class="flex_caixa"> -->
+		<nav>
+				<ul>
+					<li><a href="home.html">Home</a></li>
+					<li><a href="todos.eventos.html">Eventos</a></li>
+					<li><a href="sobre.html">Sobre</a></li>
+				</ul>
+		</nav>
+	<!-- </div> -->
+	</header>
+
+	<h1>Todos os eventos</h1>
+	<div id="y"><p id="search">Pesquisar eventos no site</p></div>
+	<div class="container" id="x">
+		<input type="text" id="a" placeholder="Pesquisar ">
+	</div>
+
+	<div id="ultimos" class="container">
+		<div id="evento1" class="evento">
+			<h1 id="name">Evento 001</h1>
+			<div class="container" id="info">
+				<p id="local">Local</p>
+				<p id="data">Data</p>
+			</div>
+		</div>
+		<div id="evento2" class="evento">
+			<h1 id="name">Evento 002</h1>
+			<div class="container" id="info">
+				<p id="local">Local</p>
+				<p id="data">Data</p>
+			</div>
+		</div>
+		<div id="evento3" class="evento">
+			<h1 id="name">Evento 003</h1>
+			<div class="container" id="info">
+				<p id="local">Local</p>
+				<p id="data">Data</p>
+			</div>
+		</div>
+		<div id="evento4" class="evento">
+			<h1 id="name">Evento 004</h1>
+			<div class="container" id="info">
+				<p id="local">Local</p>
+				<p id="data">Data</p>
+			</div>
+		</div>
+		<div id="evento5" class="evento">
+			<h1 id="name">Evento 005</h1>
+			<div class="container" id="info">
+				<p id="local">Local</p>
+				<p id="data">Data</p>
+			</div>
+		</div>
+		<div id="evento6" class="evento">
+			<h1 id="name">Evento 006</h1>
+			<div class="container" id="info">
+				<p id="local">Local</p>
+				<p id="data">Data</p>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		const searchBox = document.getElementById('a');
+		searchBox.addEventListener('keydown', function(event){
+			if(event.key === 'Enter'){
+				search();
+			}
+		});
+
+		function search(){
+			searchBox.value = '';
+			alert('enter');
+		}
+	</script>
+</body>
+</html>
