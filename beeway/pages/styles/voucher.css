@@ -134,3 +134,13 @@ a#baixar{
 .rigth#codigo{
 	margin-top: 20px;
 }
+
+footer {
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	padding: 10px;
+	position: absolute;
+	bottom: 0;
+	width: 98%;
+  }

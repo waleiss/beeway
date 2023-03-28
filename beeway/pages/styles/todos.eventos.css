@@ -34,3 +34,13 @@ div#y{
   margin-left: 50px;
   font-size: 20px;
 }
+
+footer {
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	padding: 10px;
+	position: absolute;
+	bottom: 0;
+	width: 98%;
+  }
