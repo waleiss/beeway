@@ -1,0 +1,75 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Arial, sans-serif;
+}
+
+header {
+	background-color: #333;
+	color: #fff;
+	padding: 20px;
+}
+
+nav ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	font-size: 20px;
+	justify-content: space-around;
+}
+
+nav li{
+	margin-right: 20px;
+}
+
+nav a{
+	color: #fff;
+	text-decoration: none;
+}
+
+h1#evento{
+	margin: 50px 100px;
+	margin-block-end: 0px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+p#desc{
+	margin: 50px 100px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 20px;
+}
+
+.container#bloco{
+	margin: 20px 40px;
+	align-content: center;
+	align-items: center;
+	border-radius: 30px 5px;
+	display: flex;
+	background-color: #f0f0f0;
+	height: auto;
+}
+
+div#mapa{
+	margin: 0 auto;
+}
+
+iframe#mapaufal{
+	display: block;
+	border-color: transparent;
+	margin: 20px auto;
+	border-radius: 20px;
+	width: 750px;
+	height: 400px;
+}
+
+nav#adquirir{
+	display: block;
+	background-color: #333;
+	padding: 20px;
+	margin: 20px auto;
+	margin-bottom: 20px;
+	border-radius: 10px;
+	width: 250px;
+	height: auto;
+}
