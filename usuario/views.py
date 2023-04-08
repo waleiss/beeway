@@ -5,3 +5,5 @@ def Login (request):
     return (render(request, 'pages/login.html'))
 def Cadastro(request):
     return (render(request, 'pages/cadastro.html'))
+def rSenha(request):
+    return (render(request, 'pages/rSenha.html'))
