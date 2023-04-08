@@ -1,0 +1,146 @@
+body{
+	margin: 0;
+	padding: 0;
+	font-family: Arial, sans-serif;
+}
+
+header{
+	background-color: #333;
+	color: #fff;
+	padding: 20px;
+}
+
+nav ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	font-size: 20px;
+	justify-content: space-around;
+}
+
+nav li{
+	margin-right: 20px;
+}
+
+nav a{
+	color: #fff;
+	text-decoration: none;
+}
+
+h1{
+	margin: 50px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.container#info{
+	width: 400px;
+	height: 200px;
+	align-items: center;
+	align-content: center;
+	margin: 50px;
+	background-color: white;
+	display: block;
+	border-radius: 10px 30px;
+	margin: 100px auto;
+}
+
+.container#rodape{
+	width: 300px;
+	height: 100px;
+	align-content: center;
+	align-items: center;
+	background-color: white;
+	display: flex;
+	margin: -100px auto;
+}
+
+img#share{
+	width: 50px;
+	height: 50px;
+}
+
+figcaption#person{
+	font-family: Arial, Helvetica, sans-serif;
+	font-style: 15px;
+	color: black;
+	margin-top: 5px;
+	text-decoration: none;
+}
+
+a#compartilhar{
+	margin: 0px auto;
+}
+
+a#baixar{
+	margin: 0px auto;
+}
+
+figcaption#compartilhar{
+	color: black;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	margin: 20px -20px 0px;
+}
+
+figcaption#baixar{
+	color: black;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	margin-top: 20px;
+}
+
+a#compartilhar{
+	text-decoration: none;
+}
+
+a#baixar{
+	text-decoration: none;
+}
+
+.container#data{
+	font-size: 20px;
+	border-bottom: 1px dashed;
+	display: flex;
+	justify-content: space-between;
+}
+
+.container#local{
+	font-size: 20px;
+	border-bottom: 1px dashed;
+	display: flex;
+	justify-content: space-between;
+}
+
+.left#local{
+	margin-top: 20px;
+}
+
+.rigth#local{
+	margin-top: 20px;
+}
+
+.container#codigo{
+	font-size: 20px;
+	border-bottom: 1px dashed;
+	display: flex;
+	justify-content: space-between;
+}
+
+.left#codigo{
+	margin-top: 20px;
+}
+
+.rigth#codigo{
+	margin-top: 20px;
+}
+
+footer {
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	padding: 10px;
+	position: absolute;
+	bottom: 0;
+	width: 98%;
+  }
