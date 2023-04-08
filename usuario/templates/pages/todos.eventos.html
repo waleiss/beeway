@@ -5,14 +5,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Home</title>
-    <link rel="stylesheet" href="styles/todos.eventos.css">
-	<link rel="stylesheet" href="styles/home.css">
-	<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="assests/favicon-16x16.png">
-	<link rel="manifest" href="assets/site.webmanifest">
-	<link rel="stylesheet" href="styles/font-awesome-4.7.0/css/font-awesome.min.css">
+	<title>Todos os Eventos</title>
+    {% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'todos.eventos.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'home.css' %}">
+	<link rel="apple-touch-icon" sizes="180x180" href="{% static 'apple-touch-icon.png' %}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon-16x16.png' %}">
+	<link rel="manifest" href="{% static 'site.webmanifest' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}">
 	
 </head>
 <body>
@@ -20,9 +21,9 @@
 		<!-- <div class="flex_caixa"> -->
 		<nav>
 				<ul>
-					<li><a href="home.html">Home</a></li>
-					<li><a href="todos.eventos.html">Eventos</a></li>
-					<li><a href="sobre.html">Sobre</a></li>
+					<li><a href="home">Home</a></li>
+					<li><a href="todos.eventos">Eventos</a></li>
+					<li><a href="sobre">Sobre</a></li>
 				</ul>
 		</nav>
 	<!-- </div> -->
