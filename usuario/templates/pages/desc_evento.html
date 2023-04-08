@@ -5,18 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de descrição do evento</title>
-	<link rel="stylesheet" href="styles/desc_evento.css">
-	<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="assests/favicon-16x16.png">
-	<link rel="manifest" href="assets/site.webmanifest">
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'desc_evento.css' %}">
+	<link rel="apple-touch-icon" sizes="180x180" href="{% static 'apple-touch-icon.png' %}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon-16x16.png' %}">
+	<link rel="manifest" href="{% static 'site.webmanifest' %}">
 </head>
 <body>
     <header>
 		<nav>
 				<ul>
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Eventos</a></li>
+					<li><a href="home">Home</a></li>
+					<li><a href="todos.eventos">Eventos</a></li>
 					<li><a href="#">Perfil</a></li>
 				</ul>
 		</nav>
@@ -34,7 +35,7 @@
 
 	<nav id="adquirir">
 		<ul>
-			<li><a href="voucher.html">Adquirir ingresso</a></li>
+			<li><a href="voucher">Adquirir ingresso</a></li>
 		</ul>
 	</nav>
 

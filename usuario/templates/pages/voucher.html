@@ -5,19 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ingresso</title>
-    <link rel="stylesheet" href="styles/voucher.css">
-    <link rel="stylesheet" href="styles/forma_ingresso.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="assests/favicon-16x16.png">
-	<link rel="manifest" href="assets/site.webmanifest">
+    {% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'voucher.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'forma_ingresso.css' %}">
+	<link rel="apple-touch-icon" sizes="180x180" href="{% static 'apple-touch-icon.png' %}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon-16x16.png' %}">
+	<link rel="manifest" href="{% static 'site.webmanifest' %}">
 </head>
 <body>
     <header>
 		<nav>
 				<ul>
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Eventos</a></li>
+					<li><a href="home">Home</a></li>
+					<li><a href="todos.eventos">Eventos</a></li>
 					<li><a href="#">Perfil</a></li>
 				</ul>
 		</nav>
@@ -57,11 +58,11 @@
 
     <div class="container" id="rodape">
         <a  id="compartilhar" href="" id="compartilhar">
-            <img id="share" src="assets/share.png"  alt="Compartilhar">
+            <img id="share" src="{% static 'share.png' %}"  alt="Compartilhar">
             <figcaption id="compartilhar">Compartilhar</figcaption>
         </a>
         <a id="baixar" href="" id="baixar">
-            <img id="share" src="assets/baixar.png"  alt="Baixar">
+            <img id="share" src="{% static 'baixar.png' %}"  alt="Baixar">
             <figcaption id="baixar">Baixar</figcaption>
         </a>
     </div>

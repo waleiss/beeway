@@ -13,3 +13,7 @@ def todosEventos(request):
     return (render(request, 'pages/todos.eventos.html'))
 def Sobre(request):
     return (render(request, 'pages/sobre.html'))
+def descEvento(request):
+    return (render(request, 'pages/desc_evento.html'))
+def Voucher(request):
+    return (render(request, 'pages/voucher.html'))
