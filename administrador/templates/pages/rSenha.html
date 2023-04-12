@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Recuperação de Senha</title>
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'rSenha.css' %}">
+	<link rel="apple-touch-icon" sizes="180x180" href="{% static 'apple-touch-icon.png' %}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon-16x16.png' %}">
+	<link rel="manifest" href="{% static site.webmanifest %}">
+</head>
+<body>
+	<div class="container">
+		<form class="teste">
+			<h1>Recuperação de Senha</h1>
+			<p>Insira seu e-mail abaixo para redefinir sua senha.</p>
+			<label for="email"><b>E-mail</b></label>
+			<input type="text" placeholder="Digite seu e-mail" name="email" required>
+			<button type="submit">Enviar</button>
+		</form>
+	</div>
+	<footer>
+		Beeway
+	  </footer>
+</body>
+</html>
