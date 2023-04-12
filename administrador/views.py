@@ -1,6 +1,6 @@
 from django.shortcuts import render
+from .models import Event
 
-# Create your views here.
 def Login (request):
     return (render(request, 'pages/login.html'))
 def Cadastro(request):
@@ -10,7 +10,10 @@ def rSenha(request):
 def Home(request):
     return (render(request, 'pages/home.html'))
 def todosEventos(request):
-    return (render(request, 'pages/todos.eventos.html'))
+    
+    eventos = Event.objects.all()
+    return (render(request, 'pages/todos.eventos.html', {'eventos': eventos}))
+
 def Sobre(request):
     return (render(request, 'pages/sobre.html'))
 def descEvento(request):
