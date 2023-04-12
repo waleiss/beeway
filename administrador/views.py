@@ -14,7 +14,7 @@ def Home(request):
     return (render(request, 'pages/home.html'))
 
 def todosEventos(request):
-    eventos = Event.objects.all()
+    eventos = Event.objects.all().order_by('-data_e_hora_inicio')
     return (render(request, 'pages/todos.eventos.html', {'eventos': eventos}))
 
 def Sobre(request):
@@ -26,3 +26,7 @@ def descEvento(request, id):
 
 def Voucher(request):
     return (render(request, 'pages/voucher.html'))
+
+def adicionarEvento(request):
+    return(render(request, ))
+    

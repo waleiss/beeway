@@ -9,4 +9,5 @@ urlpatterns = [
     path('administrador/sobre', views.Sobre, name = 'adminsobre'),
     path('administrador/desc_evento/<int:id>', views.descEvento, name = 'admindesc_evento'),
     path('administrador/voucher', views.Voucher, name = 'adminvoucher'),
+    path('administrador/adicionar_evento', views.adicionarEvento, name = 'adminadicionar_evento'),
 ]
