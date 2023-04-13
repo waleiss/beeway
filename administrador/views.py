@@ -1,6 +1,12 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.models import User, Group
+from django.contrib.auth.decorators import login_required, user_passes_test
 from .models import Event
 
+#Fazer com que todas as paginas de administrador necessitem que o user esteja logado e seja administrador
+def checagem_permissao(user):
+    return user.groups.filter(name='administrador').exists()
+    
 def Login (request):
     return (render(request, 'pages/login.html'))
 
@@ -10,6 +16,8 @@ def Cadastro(request):
 def rSenha(request):
     return (render(request, 'pages/rSenha.html'))
 
+@login_required
+@user_passes_test(checagem_permissao, login_url='/login/')
 def Home(request):
     eventos = Event.objects.order_by('-data_e_hora_inicio')[:6]
     return (render(request, 'pages/home.html', {'eventos': eventos}))
