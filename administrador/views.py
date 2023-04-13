@@ -16,14 +16,13 @@ def Cadastro(request):
 def rSenha(request):
     return (render(request, 'pages/rSenha.html'))
 
-@login_required
-@user_passes_test(checagem_permissao, login_url='/login/')
+
 def Home(request):
-    eventos = Event.objects.order_by('-data_e_hora_inicio')[:6]
+    eventos = Event.objects.order_by('-data_e_hora')[:6]
     return (render(request, 'pages/home.html', {'eventos': eventos}))
 
 def todosEventos(request):
-    eventos = Event.objects.all().order_by('-data_e_hora_inicio')
+    eventos = Event.objects.all().order_by('-data_e_hora')
     return (render(request, 'pages/todos.eventos.html', {'eventos': eventos}))
 
 def Sobre(request):
