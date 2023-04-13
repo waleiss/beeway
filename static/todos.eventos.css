@@ -35,7 +35,17 @@ div#y{
   font-size: 20px;
 }
 
-button.botaoAdd{
+footer {
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	padding: 10px;
+	position: absolute;
+	bottom: 0;
+	width: 98%;
+}
+
+button.botaoAdd {
   background-color: #575757;
   border-radius: 10px;
   border: none;
