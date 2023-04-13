@@ -43,4 +43,18 @@ footer {
 	position: absolute;
 	bottom: 0;
 	width: 98%;
-  }
+}
+
+button.botaoAdd {
+  background-color: #575757;
+  border-radius: 10px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin-left: 170%;
+}
