@@ -21,5 +21,7 @@ from administrador import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('administrador.urls')),
-    path('login', views.Login, name = 'login'),
+    path('login/', views.Login, name = 'login'),
+    path('cadastro', views.Cadastro, name = 'cadastro'),
+    path('rSenha', views.rSenha, name = 'rSenha'),
 ]
