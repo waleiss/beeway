@@ -18,11 +18,11 @@ def rSenha(request):
     return (render(request, 'pages/rSenha.html'))
 
 def Home(request):
-    eventos = Event.objects.order_by('-data_e_hora')[:6]
+    eventos = Event.objects.order_by('data_e_hora')[:6]
     return (render(request, 'pages/home.html', {'eventos': eventos}))
 
 def todosEventos(request):
-    eventos = Event.objects.all().order_by('-data_e_hora')
+    eventos = Event.objects.all().order_by('data_e_hora')
     return (render(request, 'pages/todos.eventos.html', {'eventos': eventos}))
 
 def Sobre(request):
