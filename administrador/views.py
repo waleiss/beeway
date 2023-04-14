@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.decorators import login_required, user_passes_test
 from .models import Event
+from .forms import EventForm
 
 #Fazer com que todas as paginas de administrador necessitem que o user esteja logado e seja administrador
 def checagem_permissao(user):
@@ -15,7 +16,6 @@ def Cadastro(request):
 
 def rSenha(request):
     return (render(request, 'pages/rSenha.html'))
-
 
 def Home(request):
     eventos = Event.objects.order_by('-data_e_hora')[:6]
@@ -36,5 +36,19 @@ def Voucher(request):
     return (render(request, 'pages/voucher.html'))
 
 def adicionarEvento(request):
-    return(render(request, ))
+    if request.method == 'POST':
+        form = EventForm(request.POST)
+        if form.is_valid():
+            novo_evento = Event(
+                titulo=form.cleaned_data['titulo'],
+                local=form.cleaned_data['local'],
+                data_e_hora=form.cleaned_data['data_e_hora'],
+                descricao=form.cleaned_data['descricao'],
+            )
+            # Salva o novo evento no banco de dados
+            novo_evento.save()
+            return redirect('todos.eventos')
+    else:
+        form = EventForm()
+    return(render(request, 'pages/addevento.html', {'form':form}))
     

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Informações Eventos</title>
+    {% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'addevento.css' %}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon-16x16.png' %}">
+	<link rel="manifest" href="{% static 'site.webmanifest' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}">
+</head>
+<body>
+	<form class="cadastro-form" method="post" {% comment %} action="{% url 'adicionarEvento' %}" {% endcomment %}>
+        {% csrf_token %}
+        <h1>Cadastro Eventos</h1>
+
+		<label for="titulo">Título do Evento:</label>
+		<input type="text" name="titulo" placeholder="Digite o titulo">
+
+		<label for="local">Local:</label>
+		<input type="text" name="local" placeholder="Digite o local">
+        
+        <label for="date-time">Data evento:</label>
+        <input type="datetime-local" name="data_e_hora" placeholder="Digite a data e hora">
+
+        <label for="descricao">Descrição sobre o Evento:</label>
+		<input type="text" name="descricao" placeholder="Digite sobre o evento">
+		
+        <input id="submit" type="submit" value="Cadastrar Evento">
+
+	</form>
+	<footer>
+		Beeway
+	  </footer>
+</body>
+</html>
