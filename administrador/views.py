@@ -65,4 +65,9 @@ def editarEvento(request, id):
     else:
         form = EventForm(instance=evento)
     return(render(request, 'pages/editevento.html', {'form':form, 'evento':evento}))
+
+def deletarEvento(request, id):
+    evento = get_object_or_404(Event, pk=id)
+    evento.delete()
+    return redirect('/administrador/todos.eventos')
     
