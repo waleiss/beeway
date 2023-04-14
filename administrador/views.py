@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib import messages
 from .models import Event
 from .forms import EventForm
 
@@ -10,7 +11,7 @@ def checagem_permissao(user):
     
 def Raiz (request):
     return redirect('login')
-    
+
 def Login (request):
     return (render(request, 'pages/login.html'))
 
@@ -50,6 +51,7 @@ def adicionarEvento(request):
             )
             # Salva o novo evento no banco de dados
             novo_evento.save()
+            messages.info(request, 'Evento adicionado com sucesso!', extra_tags='success')
             return redirect('todos.eventos')
     else:
         form = EventForm()
@@ -62,6 +64,7 @@ def editarEvento(request, id):
         form = EventForm(request.POST, instance=evento)
         if form.is_valid():
             form.save()
+            messages.info(request, 'Evento editado com sucesso!', extra_tags='success')
             return redirect('/administrador/todos.eventos')
         else:
             return(render(request, 'pages/editevento.html', {'form':form, 'evento':evento}))
@@ -72,5 +75,7 @@ def editarEvento(request, id):
 def deletarEvento(request, id):
     evento = get_object_or_404(Event, pk=id)
     evento.delete()
+    messages.info(request, 'Evento deletado com sucesso!', extra_tags='success')
+    
     return redirect('/administrador/todos.eventos')
     
