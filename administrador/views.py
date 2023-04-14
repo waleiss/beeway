@@ -8,6 +8,9 @@ from .forms import EventForm
 def checagem_permissao(user):
     return user.groups.filter(name='administrador').exists()
     
+def Raiz (request):
+    return redirect('login')
+    
 def Login (request):
     return (render(request, 'pages/login.html'))
 
