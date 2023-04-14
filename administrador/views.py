@@ -51,4 +51,18 @@ def adicionarEvento(request):
     else:
         form = EventForm()
     return(render(request, 'pages/addevento.html', {'form':form}))
+
+def editarEvento(request, id):
+    evento = get_object_or_404(Event, pk=id)
+    
+    if (request.method == 'POST'):
+        form = EventForm(request.POST, instance=evento)
+        if form.is_valid():
+            form.save()
+            return redirect('/administrador/todos.eventos')
+        else:
+            return(render(request, 'pages/editevento.html', {'form':form, 'evento':evento}))
+    else:
+        form = EventForm(instance=evento)
+    return(render(request, 'pages/editevento.html', {'form':form, 'evento':evento}))
     
