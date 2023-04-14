@@ -37,6 +37,9 @@ body {
 	padding: 10px;
 	width: 100%;
 }
+.cadastro-form input[name="descricao"]::placeholder{
+	font-size: 13px
+}
 
 .cadastro-form input[type="submit"] {
 	margin-top: 5%;
