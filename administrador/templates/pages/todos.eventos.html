@@ -32,9 +32,14 @@
 	<h1>Todos os eventos</h1>
 	<div id="y"><p id="search">Pesquisar eventos no site</p></div>
 	<div class="container" id="x">
-		<input type="text" id="a" placeholder="Pesquisar ">
+		
+		<form method="GET"> 
+		<input type="text" id="a" placeholder="Pesquisar" name="search" value="{{request.GET.search}}">
+		</form>
+		
 		<button class="botaoAdd"> <a href="adicionar_evento" style="text-decoration: none; color: #fff">Adicionar Evento </a></button>
 	</div>
+	
 	{% comment %} Procurando as mensagens de sucesso ao terminar uma operação {% endcomment %}
 	{% if messages %} 
 		<ul class="messages"> 
@@ -78,18 +83,6 @@
 	<footer>
 		Beeway
 	</footer>
-	<script>
-		const searchBox = document.getElementById('a');
-		searchBox.addEventListener('keydown', function(event){
-			if(event.key === 'Enter'){
-				search();
-			}
-		});
 
-		function search(){
-			searchBox.value = '';
-			alert('enter');
-		}
-	</script>
 </body>
 </html>

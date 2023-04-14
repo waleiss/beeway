@@ -27,12 +27,21 @@ def Home(request):
     return (render(request, 'pages/home.html', {'eventos': eventos}))
 
 def todosEventos(request):
-    eventos_lista = Event.objects.all().order_by('data_e_hora')
     
-    """ Adicionar isso quando a paginação puder aparecer na tela
-    paginator = Paginator(eventos_lista, 12)
-    page = request.GET.get('page')
-    eventos = paginator.get_page(page) """
+    search = request.GET.get('search')
+    
+    if search:
+
+        eventos_lista = Event.objects.filter(titulo__icontains=search)
+    
+    else:
+
+        eventos_lista = Event.objects.all().order_by('data_e_hora')
+        
+        """ Adicionar isso quando a paginação puder aparecer na tela
+        paginator = Paginator(eventos_lista, 12)
+        page = request.GET.get('page')
+        eventos = paginator.get_page(page) """
 
     return (render(request, 'pages/todos.eventos.html', {'eventos': eventos_lista}))
 
