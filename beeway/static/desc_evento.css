@@ -46,6 +46,7 @@ p#desc{
 	align-items: center;
 	border-radius: 30px 5px;
 	display: flex;
+	flex-direction: column;
 	background-color: #f0f0f0;
 	height: auto;
 }

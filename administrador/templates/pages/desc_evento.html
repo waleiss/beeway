@@ -25,7 +25,10 @@
 	<h1 id="evento">{{evento.titulo}}</h1>
 	<div class="container" id="bloco">
 		<p id="desc">
-			{{evento.descricao}}
+			<h4>Descrição:</h4>{{evento.descricao}}
+			<h4>Local:</h4>{{ evento.local }}
+			<h4>Data:</h4> {{ evento.data_e_hora|date:"d/m/Y" }}
+			<h4>Hora:</h4> {{ evento.data_e_hora|time:"H:i" }}
 		</p>
 	</div>
 	
