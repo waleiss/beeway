@@ -58,8 +58,23 @@
 			</div>
 		</div>
 		{% endfor %}
-
 	</div>
+	
+	{% comment %} PAGINAÇÃO PARA DIVIDIR O CONTEUDO EM PAGINAS 
+	<div class="pagination"> 
+		<span class="step-links">
+			{% if eventos.has_previous %}
+				<a href="?page={{eventos.previous_page_number}}"> <i class="fas fa-arrow-left"></i></a>
+			{%endif%}
+			<span class="current">
+				{{ eventos.number }} de {{ eventos.paginator_num_pages }}
+			</span>
+			{% if eventos.has_next %}
+				<a href="?page={{eventos.next_page_number}}"> <i class="fas fa-arrow-right"></i></a>
+			{%endif%}
+		</span>
+	</div> {% endcomment %}
+
 	<footer>
 		Beeway
 	</footer>

@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib import messages
+from django.core.paginator import Paginator
 from .models import Event
 from .forms import EventForm
 
@@ -26,8 +27,14 @@ def Home(request):
     return (render(request, 'pages/home.html', {'eventos': eventos}))
 
 def todosEventos(request):
-    eventos = Event.objects.all().order_by('data_e_hora')
-    return (render(request, 'pages/todos.eventos.html', {'eventos': eventos}))
+    eventos_lista = Event.objects.all().order_by('data_e_hora')
+    
+    """ Adicionar isso quando a paginação puder aparecer na tela
+    paginator = Paginator(eventos_lista, 12)
+    page = request.GET.get('page')
+    eventos = paginator.get_page(page) """
+
+    return (render(request, 'pages/todos.eventos.html', {'eventos': eventos_lista}))
 
 def Sobre(request):
     return (render(request, 'pages/sobre.html'))
