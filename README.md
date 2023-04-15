@@ -9,4 +9,7 @@ pip install django
 ```
 python ./manage.py runserver
 ```
-
+3. Abra no navegador a URL:
+```
+http://127.0.0.1:8000/
+```
