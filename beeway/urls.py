@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-""" A view de verificação se o usuario é admin ou usuario está no app de administrador"""
+""" As views de cadastro, raiz e verificação se o usuario é admin ou usuario está no app de administrador"""
 from django.contrib import admin
 from django.urls import path, include
 from administrador import views
@@ -22,8 +22,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('cadastro', views.Cadastro, name = 'cadastro'),
     path('rSenha', views.rSenha, name = 'rSenha'),
-    path('accounts/', include('django.contrib.auth.urls')),
     path('', include('administrador.urls')),
+    path('accounts/cadastro', views.Cadastro, name = 'cadastro'),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('', include('usuario.urls')),
     path('', views.Raiz, name='raiz'),
     path('verificador', views.Verificador, name='verificador'),

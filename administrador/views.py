@@ -1,10 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.core.paginator import Paginator
 from .models import Event
-from .forms import EventForm
+from .forms import EventForm, CadastroForm
 
 #Fazer com que todas as paginas de administrador necessitem que o user esteja logado e seja administrador
 def checagem_grupoadmin(user):
@@ -23,10 +24,19 @@ def Raiz (request):
     return redirect('/administrador/home')
 
 def Cadastro(request):
-    return (render(request, 'pages/cadastro.html'))
+    if request.method == 'POST':
+        form = CadastroForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            grupo = Group.objects.get(name='Usuario')
+            user.groups.add(grupo)
+            return redirect('login')
+    else:
+        form = CadastroForm()
+    return (render(request, 'registration/cadastro.html', {'form':form}))
 
 def rSenha(request):
-    return (render(request, 'pages/rSenha.html'))
+    return (render(request, 'registration/rSenha.html'))
 
 @user_passes_test(checagem_grupoadmin, login_url = '/accounts/login', redirect_field_name='')
 def Home(request):
@@ -35,22 +45,17 @@ def Home(request):
 
 @user_passes_test(checagem_grupoadmin, login_url = '/accounts/login', redirect_field_name='')
 def todosEventos(request):
-    
     search = request.GET.get('search')
-    
     if search:
-
         eventos_lista = Event.objects.filter(titulo__icontains=search)
-    
     else:
-
         eventos_lista = Event.objects.all().order_by('data_e_hora')
         
         """ Adicionar isso quando a paginação puder aparecer na tela
         paginator = Paginator(eventos_lista, 12)
         page = request.GET.get('page')
         eventos = paginator.get_page(page) """
-
+    
     return (render(request, 'pages/todos.eventos.html', {'eventos': eventos_lista}))
 
 @user_passes_test(checagem_grupoadmin, login_url = '/accounts/login', redirect_field_name='')
