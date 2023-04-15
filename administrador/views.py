@@ -7,14 +7,20 @@ from .models import Event
 from .forms import EventForm
 
 #Fazer com que todas as paginas de administrador necessitem que o user esteja logado e seja administrador
-def checagem_permissao(user):
-    return user.groups.filter(name='administrador').exists()
-    
-def Raiz (request):
-    return redirect('login')
+def checagem_grupoadmin(user):
+    """ se for usuario comum, redireciona para a pagina de login. """ 
+    group = Group.objects.get(name='Administrador')
+    return group in user.groups.all()
 
-def Login (request):
-    return (render(request, 'pages/login.html'))
+@login_required
+def Verificador(request):
+    if request.user.groups.filter(name='Administrador').exists():
+        return redirect('/administrador/home')
+    elif request.user.groups.filter(name='Usuario').exists():
+        return redirect('/usuario/home')
+
+def Raiz (request):
+    return redirect('/administrador/home')
 
 def Cadastro(request):
     return (render(request, 'pages/cadastro.html'))
@@ -22,10 +28,12 @@ def Cadastro(request):
 def rSenha(request):
     return (render(request, 'pages/rSenha.html'))
 
+@user_passes_test(checagem_grupoadmin, login_url = '/accounts/login', redirect_field_name='')
 def Home(request):
     eventos = Event.objects.order_by('data_e_hora')[:6]
     return (render(request, 'pages/home.html', {'eventos': eventos}))
 
+@user_passes_test(checagem_grupoadmin, login_url = '/accounts/login', redirect_field_name='')
 def todosEventos(request):
     
     search = request.GET.get('search')
@@ -45,16 +53,20 @@ def todosEventos(request):
 
     return (render(request, 'pages/todos.eventos.html', {'eventos': eventos_lista}))
 
+@user_passes_test(checagem_grupoadmin, login_url = '/accounts/login', redirect_field_name='')
 def Sobre(request):
     return (render(request, 'pages/sobre.html'))
 
+@user_passes_test(checagem_grupoadmin, login_url = '/accounts/login', redirect_field_name='')
 def descEvento(request, id):
     evento = get_object_or_404(Event, pk=id)
     return (render(request, 'pages/desc_evento.html', {'evento' : evento}))
 
+@user_passes_test(checagem_grupoadmin, login_url = '/accounts/login', redirect_field_name='')
 def Voucher(request):
     return (render(request, 'pages/voucher.html'))
 
+@user_passes_test(checagem_grupoadmin, login_url = '/accounts/login', redirect_field_name='')
 def adicionarEvento(request):
     if request.method == 'POST':
         form = EventForm(request.POST)
@@ -73,6 +85,7 @@ def adicionarEvento(request):
         form = EventForm()
     return(render(request, 'pages/addevento.html', {'form':form}))
 
+@user_passes_test(checagem_grupoadmin, login_url = '/accounts/login', redirect_field_name='')
 def editarEvento(request, id):
     evento = get_object_or_404(Event, pk=id)
     
@@ -88,6 +101,7 @@ def editarEvento(request, id):
         form = EventForm(instance=evento)
     return(render(request, 'pages/editevento.html', {'form':form, 'evento':evento}))
 
+@user_passes_test(checagem_grupoadmin, login_url = '/accounts/login', redirect_field_name='')
 def deletarEvento(request, id):
     evento = get_object_or_404(Event, pk=id)
     evento.delete()
