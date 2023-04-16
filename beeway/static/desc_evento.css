@@ -10,7 +10,7 @@ html{
 }
 body {
 	background-color: white;
-	margin: 0;
+	margin-bottom: 20px;
 	min-height: 100%;
 	padding-bottom: 6.74rem;
 	position: relative;

@@ -41,7 +41,7 @@ def rSenha(request):
 @user_passes_test(checagem_grupoadmin, login_url = '/accounts/login', redirect_field_name='')
 def Home(request):
     eventos = Event.objects.order_by('data_e_hora')[:6]
-    return (render(request, 'pages/home.html', {'eventos': eventos}))
+    return (render(request, 'administrador/home.html', {'eventos': eventos}))
 
 @user_passes_test(checagem_grupoadmin, login_url = '/accounts/login', redirect_field_name='')
 def todosEventos(request):
@@ -56,20 +56,20 @@ def todosEventos(request):
         page = request.GET.get('page')
         eventos = paginator.get_page(page) """
     
-    return (render(request, 'pages/todos.eventos.html', {'eventos': eventos_lista}))
+    return (render(request, 'administrador/todos.eventos.html', {'eventos': eventos_lista}))
 
 @user_passes_test(checagem_grupoadmin, login_url = '/accounts/login', redirect_field_name='')
 def Sobre(request):
-    return (render(request, 'pages/sobre.html'))
+    return (render(request, 'administrador/sobre.html'))
 
 @user_passes_test(checagem_grupoadmin, login_url = '/accounts/login', redirect_field_name='')
 def descEvento(request, id):
     evento = get_object_or_404(Event, pk=id)
-    return (render(request, 'pages/desc_evento.html', {'evento' : evento}))
+    return (render(request, 'administrador/desc_evento.html', {'evento' : evento}))
 
 @user_passes_test(checagem_grupoadmin, login_url = '/accounts/login', redirect_field_name='')
 def Voucher(request):
-    return (render(request, 'pages/voucher.html'))
+    return (render(request, 'administrador/voucher.html'))
 
 @user_passes_test(checagem_grupoadmin, login_url = '/accounts/login', redirect_field_name='')
 def adicionarEvento(request):
@@ -88,7 +88,7 @@ def adicionarEvento(request):
             return redirect('todos.eventos')
     else:
         form = EventForm()
-    return(render(request, 'pages/addevento.html', {'form':form}))
+    return(render(request, 'administrador/addevento.html', {'form':form}))
 
 @user_passes_test(checagem_grupoadmin, login_url = '/accounts/login', redirect_field_name='')
 def editarEvento(request, id):
@@ -101,10 +101,10 @@ def editarEvento(request, id):
             messages.info(request, f'Evento "{evento.titulo}" editado com sucesso!', extra_tags='success')
             return redirect('/administrador/todos.eventos')
         else:
-            return(render(request, 'pages/editevento.html', {'form':form, 'evento':evento}))
+            return(render(request, 'administrador/editevento.html', {'form':form, 'evento':evento}))
     else:
         form = EventForm(instance=evento)
-    return(render(request, 'pages/editevento.html', {'form':form, 'evento':evento}))
+    return(render(request, 'administrador/editevento.html', {'form':form, 'evento':evento}))
 
 @user_passes_test(checagem_grupoadmin, login_url = '/accounts/login', redirect_field_name='')
 def deletarEvento(request, id):

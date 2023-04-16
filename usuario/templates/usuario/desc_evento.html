@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de descrição do evento</title>
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'desc_evento.css' %}">
+	<link rel="apple-touch-icon" sizes="180x180" href="{% static 'apple-touch-icon.png' %}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon-16x16.png' %}">
+	<link rel="manifest" href="{% static 'site.webmanifest' %}">
+</head>
+<body>
+    <header>
+		<nav>
+				<ul>
+					<li><a href="/usuario/home">Home</a></li>
+					<li><a href="/usuario/todos.eventos">Eventos</a></li>
+					<li><a href="/usuario/sobre">Sobre</a></li>
+					<li><a href="/accounts/logout">Sair <i class="fa fa-power-off" aria-hidden="true"></i> </a></li>
+				</ul>
+		</nav>
+	</header>
+	<h1 id="evento">{{evento.titulo}}</h1>
+	<div class="container" id="bloco">
+		<p id="desc">
+			<h4>Descrição:</h4>{{evento.descricao}}
+			<h4>Local:</h4>{{ evento.local }}
+			<h4>Data:</h4> {{ evento.data_e_hora|date:"d/m/Y" }}
+			<h4>Hora:</h4> {{ evento.data_e_hora|time:"H:i" }}
+		</p>
+	</div>
+	
+	<iframe id="mapaufal" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q={{evento.local}}+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+		<a href="https://www.maps.ie/distance-area-calculator.html"></a>
+	</iframe>
+
+	<nav id="adquirir">
+		<ul>
+			<li><a href="/usuario/voucher">Adquirir ingresso</a></li>
+		</ul>
+	</nav>
+
+	<footer>
+		Beeway
+	</footer>
+
+</body>
+</html>
