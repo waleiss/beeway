@@ -1,6 +1,8 @@
+#Administrador:
 username: admin
 email: admin@admin.com
 senha: admin
+#Usuário:
 username:joao
 email:joao@joao.com
 senha: projetop3
