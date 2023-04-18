@@ -130,7 +130,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_URL = '/accounts/login/?next='
+LOGIN_URL = '/accounts/login'
 LOGIN_REDIRECT_URL = 'verificador'
 LOGOUT_REDIRECT_URL = '/accounts/login'
 

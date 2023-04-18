@@ -1,29 +1,15 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ingresso</title>
-    {% load static %}
-	<link rel="stylesheet" type="text/css" href="{% static 'voucher.css' %}">
+{% extends 'base-usuario.html' %}
+
+{% block title %}Voucher{% endblock %}
+
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'voucher.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'forma_ingresso.css' %}">
-	<link rel="apple-touch-icon" sizes="180x180" href="{% static 'apple-touch-icon.png' %}">
-	<link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}">
-	<link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon-16x16.png' %}">
-	<link rel="manifest" href="{% static 'site.webmanifest' %}">
-</head>
-<body>
-    <header>
-		<nav>
-				<ul>
-					<li><a href="home">Home</a></li>
-					<li><a href="todos.eventos">Eventos</a></li>
-                    <li><a href="sobre">Sobre</a></li>
-					<li><a href="/accounts/logout">Sair<i class="fa fa-power-off" aria-hidden="true"></i> </a></li>
-				</ul>
-		</nav>
-	</header>
+{% endblock %}
+    
+{% block content %}
+
     <h1>Voucher</h1>
     <div class="container" id="ingresso">
         <p id="dados"><strong>Ingresso</strong></p>
@@ -67,9 +53,8 @@
             <figcaption id="baixar">Baixar</figcaption>
         </a>
     </div>
-
+    
+{% endblock %}
 {% comment %}     <footer>
 		Beeway
 	</footer> {% endcomment %}
-</body>
-</html>

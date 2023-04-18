@@ -1,29 +1,15 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de descrição do evento</title>
-	{% load static %}
+{% extends 'base-usuario.html' %}
+
+{% block title %}Descrição do evento{% endblock %}
+
+{% load static %}
+{% block head %}
 	<link rel="stylesheet" type="text/css" href="{% static 'desc_evento.css' %}">
-	<link rel="apple-touch-icon" sizes="180x180" href="{% static 'apple-touch-icon.png' %}">
-	<link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}">
-	<link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon-16x16.png' %}">
-	<link rel="manifest" href="{% static 'site.webmanifest' %}">
-</head>
-<body>
-    <header>
-		<nav>
-				<ul>
-					<li><a href="/usuario/home">Home</a></li>
-					<li><a href="/usuario/todos.eventos">Eventos</a></li>
-					<li><a href="/usuario/sobre">Sobre</a></li>
-					<li><a href="/accounts/logout">Sair <i class="fa fa-power-off" aria-hidden="true"></i> </a></li>
-				</ul>
-		</nav>
-	</header>
-	<h1 id="evento">{{evento.titulo}}</h1>
+{% endblock %}
+
+{% block content %}
+
+<h1 id="evento">{{evento.titulo}}</h1>
 	<div class="container" id="bloco">
 		<p id="desc">
 			<h4>Descrição:</h4>{{evento.descricao}}
@@ -43,9 +29,4 @@
 		</ul>
 	</nav>
 
-	<footer>
-		Beeway
-	</footer>
-
-</body>
-</html>
+{% endblock %}	

@@ -1,71 +1,53 @@
-<!DOCTYPE html>
-<html>
-<html lang="pt-br"></html>
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Todos os Eventos</title>
-    {% load static %}
-	<link rel="stylesheet" type="text/css" href="{% static 'todos.eventos.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'home.css' %}">
-	<link rel="apple-touch-icon" sizes="180x180" href="{% static 'apple-touch-icon.png' %}">
-	<link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}">
-	<link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon-16x16.png' %}">
-	<link rel="manifest" href="{% static 'site.webmanifest' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}">
-	
-</head>
-<body>
-	<header>
-		<!-- <div class="flex_caixa"> -->
-		<nav>
-				<ul>
-					<li><a href="home">Home</a></li>
-					<li><a href="todos.eventos">Eventos</a></li>
-					<li><a href="sobre">Sobre</a></li>
-					<li><a href="/accounts/logout">Sair <i class="fa fa-power-off" aria-hidden="true"></i> </a></li>
-				</ul>
-		</nav>
-	<!-- </div> -->
-	</header>
+{% extends 'base-administrador.html' %}
 
+{% block title %}Todos os eventos{% endblock %}
+
+{% load static %}
+{% block head %}
+	<link rel="stylesheet" type="text/css" href="{% static 'home.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'todos.eventos.css' %}">
+{% endblock %}
+	
+{% block content %}	
+	
 	<h1>Todos os eventos</h1>
-	<div id="y"><p id="search">Pesquisar eventos no site</p></div>
-	<div class="container" id="x">
-		
-		<form method="GET"> 
-		<input type="text" id="a" placeholder="Pesquisar" name="search" value="{{request.GET.search}}">
-		</form>
-		
-		<button class="botaoAdd"> <a href="adicionar_evento" style="text-decoration: none; color: #fff">Adicionar Evento </a></button>
-	</div>
-	
-	{% comment %} Procurando as mensagens de sucesso ao terminar uma operação {% endcomment %}
-	{% if messages %} 
-		<ul class="messages"> 
-			{% for message in messages %} 
-				<li {% if message.tags %} class="alert alert--{{message.tags}}" {% endif %}> {{message}} </li> 
-			{% endfor %}
-		</ul>
-	{% endif%}
-	
-	<div id="ultimos" class="container">
-		{% for eventos in eventos %}
-		<div class="evento">
-			<h1> 
-				<a style="text-decoration: none; color: #fff" href= "desc_evento/{{eventos.id}}">{{eventos.titulo}}</a>
-				<a style="text-decoration: none; color: #9CCC65" href= "editar_evento/{{eventos.id}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-				<a style="text-decoration: none; color: #FF6347" href= "deletar_evento/{{eventos.id}}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-			</h1> 
-			<div class="container" id="info">
-				<p>{{eventos.local}}</p>
-				<p>{{eventos.data_e_hora}}</p>
-			</div>
+		<div id="y"><p id="search">Pesquisar eventos no site</p></div>
+		<div class="container" id="x">
+			
+			<form method="GET"> 
+			<input type="text" id="a" placeholder="Pesquisar" name="search" value="{{request.GET.search}}">
+			</form>
+			
+			<button class="botaoAdd"> <a href="adicionar_evento" style="text-decoration: none; color: #fff">Adicionar Evento </a></button>
 		</div>
-		{% endfor %}
-	</div>
-	
+		
+		{% comment %} Procurando as mensagens de sucesso ao terminar uma operação {% endcomment %}
+		{% if messages %} 
+			<ul class="messages"> 
+				{% for message in messages %} 
+					<li {% if message.tags %} class="alert alert--{{message.tags}}" {% endif %}> {{message}} </li> 
+				{% endfor %}
+			</ul>
+		{% endif%}
+		
+		<div id="ultimos" class="container">
+			{% for eventos in eventos %}
+			<div class="evento">
+				<h1> 
+					<a style="text-decoration: none; color: #fff" href= "desc_evento/{{eventos.id}}">{{eventos.titulo}}</a>
+					<a style="text-decoration: none; color: #9CCC65" href= "editar_evento/{{eventos.id}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+					<a style="text-decoration: none; color: #FF6347" href= "deletar_evento/{{eventos.id}}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+				</h1> 
+				<div class="container" id="info">
+					<p>{{eventos.local}}</p>
+					<p>{{eventos.data_e_hora}}</p>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+
+{% endblock %}
+
 	{% comment %} PAGINAÇÃO PARA DIVIDIR O CONTEUDO EM PAGINAS 
 	<div class="pagination"> 
 		<span class="step-links">
@@ -80,10 +62,3 @@
 			{%endif%}
 		</span>
 	</div> {% endcomment %}
-
-	<footer>
-		Beeway
-	</footer>
-
-</body>
-</html>

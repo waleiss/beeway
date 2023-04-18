@@ -1,28 +1,14 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de descrição do evento</title>
-	{% load static %}
-	<link rel="stylesheet" type="text/css" href="{% static 'desc_evento.css' %}">
-	<link rel="apple-touch-icon" sizes="180x180" href="{% static 'apple-touch-icon.png' %}">
-	<link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}">
-	<link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon-16x16.png' %}">
-	<link rel="manifest" href="{% static 'site.webmanifest' %}">
-</head>
-<body>
-    <header>
-		<nav>
-				<ul>
-					<li><a href="/administrador/home">Home</a></li>
-					<li><a href="/administrador/todos.eventos">Eventos</a></li>
-					<li><a href="/administrador/sobre">Sobre</a></li>
-					<li><a href="/accounts/logout">Sair</a></li>
-				</ul>
-		</nav>
-	</header>
+{% extends 'base-administrador.html' %}
+
+{% block title %}Descrição do evento{% endblock %}
+
+{% load static %}
+{% block head %}
+	<link rel="stylesheet" type="text/css" href="{% static 'desc_evento.css' %}">	
+{% endblock %}
+
+{% block content %}
+	
 	<h1 id="evento">{{evento.titulo}}</h1>
 	<div class="container" id="bloco">
 		<p id="desc">
@@ -37,9 +23,4 @@
 		<a href="https://www.maps.ie/distance-area-calculator.html"></a>
 	</iframe>
 
-	<footer>
-		Beeway
-	</footer>
-
-</body>
-</html>
+{% endblock %}	

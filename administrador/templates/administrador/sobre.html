@@ -1,35 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>Sobre</title>
-	{% load static %}
+{% extends 'base-administrador.html' %}
+
+{% block title %}Sobre{% endblock %}
+
+{% load static %}
+{% block head %}
 	<link rel="stylesheet" type="text/css" href="{% static 'sobre.css' %}">
-	<link rel="apple-touch-icon" sizes="180x180" href="{% static 'apple-touch-icon.png' %}">
-	<link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}">
-	<link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon-16x16.png' %}">
-	<link rel="manifest" href="{% static 'site.webmanifest' %}">
-</head>
-<body>
-	<header>
-		<!-- <div class="flex_caixa"> -->
-		<nav>
-				<ul>
-					<li><a href="home">Home</a></li>
-					<li><a href="todos.eventos">Eventos</a></li>
-					<li><a href="sobre">Sobre</a></li>
-					<li><a href="/accounts/logout">Sair <i class="fa fa-power-off" aria-hidden="true"></i> </a></li>
-				</ul>
-		</nav>
-	<!-- </div> -->
-	</header>
+{% endblock %}
+{% block content %}
+
 	<div class="container">
-			<h1>Sobre o Projeto</h1>
-			<p>Colocar informção sobre esse projeto, objetivo e tal.
-                colocar os nomes das pessoas que fizeram (grupo) .
-            </p>
+		<h1>Sobre o Projeto</h1>
+		<p>Colocar informção sobre esse projeto, objetivo e tal.
+			colocar os nomes das pessoas que fizeram (grupo) .
+		</p>
 	</div>
-	<footer>
-		Beeway
-  </footer>
-</html>
+
+{% endblock %}	

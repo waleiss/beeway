@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from administrador import views
+from django.urls import re_path
+from django.views.generic.base import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,4 +29,5 @@ urlpatterns = [
     path('', views.Raiz, name='raiz'),
     path('', include('administrador.urls')),
     path('', include('usuario.urls')),
+    re_path(r'^favicon\.ico$', RedirectView.as_view(url='/beeway/static/favicon.ico')),
 ]
