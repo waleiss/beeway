@@ -81,6 +81,8 @@ def adicionarEvento(request):
                 local=form.cleaned_data['local'],
                 data_e_hora=form.cleaned_data['data_e_hora'],
                 descricao=form.cleaned_data['descricao'],
+                contato=form.cleaned_data['contato'],
+                max_ingressos=form.cleaned_data['max_ingressos'],
             )
             # Salva o novo evento no banco de dados
             novo_evento.save()

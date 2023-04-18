@@ -1,8 +1,15 @@
+html{
+	height:100%;
+	box-sizing: border-box;
+}
 body {
 	background-color: #a0acad;
 	font-family: Arial, sans-serif;
 	margin: 0;
-	padding: 0;
+	min-height: 100%;
+	padding-bottom: 6.74rem;
+	position: relative;
+	box-sizing: inherit;
 }
 
 .cadastro-form {
@@ -27,7 +34,8 @@ body {
 }
 
 .cadastro-form input[type="text"],
-.cadastro-form input[type="datetime-local"] 
+.cadastro-form input[type="datetime-local"],
+.cadastro-form input[type="number"]
 {
 	border-radius: 5px;
 	border: 1px solid #ccc;
@@ -37,6 +45,7 @@ body {
 	padding: 10px;
 	width: 100%;
 }
+.cadastro-form input[name="contato"]::placeholder,
 .cadastro-form input[name="descricao"]::placeholder{
 	font-size: 13px
 }
