@@ -6,3 +6,10 @@ senha: admin
 username:joao
 email:joao@joao.com
 senha: projetop3
+
+#Cartão de crédito:
+MARCA : VISA
+NOME : Zulikha Akhtakhanov
+NÚMERO: 4746419045207092
+VALIDADE: 12/2029
+CVV : 2561

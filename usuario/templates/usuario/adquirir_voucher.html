@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Adquirir voucher</title>
+    {% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/adquirir_voucher.css' %}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon-32x32.png' %}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon-16x16.png' %}">
+	<link rel="manifest" href="{% static 'site.webmanifest' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}">
+</head>
+<body>
+	{% if form.errors %}
+		<div class="alert alert--failed">
+			{% for field, errors in form.errors.items %}
+				<strong>{{ field|title }}:</strong>
+				{% for error in errors %}
+					{{ error }}<br>
+				{% endfor %}
+			{% endfor %}
+		</div>
+	{% endif %}
+	
+	<form class="cadastro-form" method="post">
+        {% csrf_token %}
+        <h1>Insira um cartão para o pagamento</h1>
+
+		<label for="nome_titular">Nome do titular:</label>
+		<input type="text" name="nome_titular" placeholder="Digite o nome do titular do cartão">
+
+		<label for="numero_cartao">Número do cartão:</label>
+		<input type="text" name="numero_cartao" placeholder="Digite o número do cartão">
+
+		<label for="data_validade">Data de validade:</label>
+		{{ form.data_validade.as_widget }}
+		{{ form.data_validade.errors }}
+		{% comment %} <input type="text" name="data_validade" placeholder="Digite o mês/ano de validade do cartão"> {% endcomment %}
+        
+        <label for="cvv">CVV:</label>
+        <input type="text" name="cvv" placeholder="Digite o código de segurança do cartão">
+
+		<input id="submit" type="submit" value="Adquirir voucher">
+
+	</form>
+	<footer>
+		Beeway
+	  </footer>
+</body>
+</html>
