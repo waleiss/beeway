@@ -1,18 +1,6 @@
 *{
     font-family: Arial, Helvetica, sans-serif;
 }
-html{
-	height:100%;
-	box-sizing: border-box;
-}
-body {
-	background-color: white;
-	margin: 0;
-	min-height: 100%;
-	padding-bottom: 6.74rem;
-	position: relative;
-	box-sizing: inherit;
-}
 
 header {
 	background-color: #333;
@@ -40,7 +28,7 @@ nav a {
 
 h1{
     margin-top: 3%;
-    margin-left: 2%;
+    margin-left: 5%;
 }
 
 .container#todos{
@@ -73,15 +61,15 @@ a#todos{
 	grid-template-columns: repeat(3, 1fr);
 	grid-template-rows: repeat(2, 1fr);
 	gap: 5%;
-	grid-row-gap: 20%;
-	margin: 5% 5% 0px 5%;
+	row-gap: 10%;
+	margin: 10% 5% 5% 5%;
 }
 
 .evento{
 	background-color: #575757;
 	border-radius: 15px;
-	width: 300px;
-	height: 150px;
+	width: auto;
+	height: auto;
 	color: white;
 	display: block;
 }
@@ -89,6 +77,9 @@ a#todos{
 @media only screen and (max-width: 1000px) {
 	.evento{
 	  width: 100%;
+	}
+	.container#ultimos{
+		margin: 20% 5% 5% 5%;
 	}
 }
 
@@ -99,6 +90,7 @@ h1#name{
 .container#info{
 	display: flex;
 	justify-content: space-between;
+	margin: 10px;
 }
 
 p#local{
@@ -109,6 +101,20 @@ p#data{
 	margin-right: 10%;
 }
 
+html{
+	height:100%;
+	box-sizing: border-box;
+}
+body {
+	background-color: white;
+	margin: 0;
+	min-height: 100%;
+	padding-bottom: 6.74rem;
+	position: relative;
+	box-sizing: inherit;
+}
+
+
 footer {
 	background-color: #333;
 	color: #fff;
@@ -116,5 +122,16 @@ footer {
 	padding: 10px;
 	position: absolute;
 	bottom: 0;
-	width: 98%;
-  }
+	width: 100%;
+} 
+/* footer {
+position: absolute;
+left: 0;
+bottom: 0;
+width: 100%;
+background-color: #333;
+color: #fff;
+text-align: center;
+padding: 10px; */
+/* margin-top: auto; 
+}*/

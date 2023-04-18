@@ -9,8 +9,11 @@
   background-color: white;
   width: 500px;
   height: 20px;
-  margin: 0px 50px;
+  margin: 0px auto;
   margin-bottom: 100px;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 50px;
 }
 
 input#a{
@@ -18,7 +21,7 @@ input#a{
   border-width: 1px;
   width: 300px;
   height: 25px;
-  background-image: url(busca.png);
+  background-image: url(../img/busca.png);
   background-position: 10px center;
   background-repeat: no-repeat;
   background-size: 20px;
@@ -35,19 +38,8 @@ div#y{
   font-size: 20px;
 }
 
-footer {
-	background-color: #333;
-	color: #fff;
-	text-align: center;
-	padding: 10px;
-	position: absolute;
-	bottom: 0;
-	width: 98%;
-}
-
 button.botaoAdd {
   background-color: #575757;
-  border-radius: 10px;
   border: none;
   border-radius: 10px;
   color: white;
@@ -55,8 +47,7 @@ button.botaoAdd {
   padding: 10px 20px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
-  margin-left: 135%;
+  margin-top: 50px;
 }
 
 /* Mensagens */

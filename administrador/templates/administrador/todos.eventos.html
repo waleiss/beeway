@@ -11,14 +11,13 @@
 {% block content %}	
 	
 	<h1>Todos os eventos</h1>
-		<div id="y"><p id="search">Pesquisar eventos no site</p></div>
 		<div class="container" id="x">
-			
+			<div id="y"><p id="search">Pesquisar eventos no site</p></div>
 			<form method="GET"> 
-			<input type="text" id="a" placeholder="Pesquisar" name="search" value="{{request.GET.search}}">
+				<input type="text" id="a" placeholder="Pesquisar" name="search" value="{{request.GET.search}}">
 			</form>
 			
-			<button class="botaoAdd"> <a href="adicionar_evento" style="text-decoration: none; color: #fff">Adicionar Evento </a></button>
+			<button class="botaoAdd"><a href="adicionar_evento" style="text-decoration: none; color: #fff">Adicionar Evento </a></button>
 		</div>
 		
 		{% comment %} Procurando as mensagens de sucesso ao terminar uma operação {% endcomment %}
@@ -45,6 +44,7 @@
 			</div>
 			{% endfor %}
 		</div>
+{% comment %} <div style="height: 150px;"></div> {% endcomment %}
 
 {% endblock %}
 
