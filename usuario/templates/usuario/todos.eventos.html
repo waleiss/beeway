@@ -19,7 +19,7 @@
 		</form>
 	</div>
 	
-	{% comment %} Procurando as mensagens de sucesso ao terminar uma operação {% endcomment %}
+	{% comment %} Procurando as mensagens de sucesso ao terminar uma operação 
 	{% if messages %} 
 			<ul class="messages"> 
 				{% for message in messages %} 
@@ -27,7 +27,8 @@
 				{% endfor %}
 			</ul>
 	{% endif%}
-
+	{% endcomment %}
+	
 	<div id="ultimos" class="container">
 		{% for eventos in eventos %}
 		<div class="evento">

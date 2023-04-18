@@ -46,6 +46,7 @@ def descEvento(request, id):
 def Voucher(request):
     return (render(request, 'usuario/voucher.html'))
 
+@user_passes_test(checagem_grupousuario, login_url = '/accounts/login', redirect_field_name='')
 def adquirirVoucher(request, id):
     evento = get_object_or_404(Event, pk=id)
 
@@ -55,7 +56,7 @@ def adquirirVoucher(request, id):
 
         # Verificar se os dados são válidos
         if form.is_valid():
-            messages.success(request, f'Voucher para o evento {evento.nome} adquirido com sucesso!')
+            """ messages.success(request, f'Voucher para o evento {evento.titulo} adquirido com sucesso!') """
 
             # Redirecionar para a página de sucesso
             return redirect('/usuario/home')
