@@ -26,6 +26,9 @@
 						{% if message.tags == 'conseguiu_voucher success' %}
 							<li class="alert alert--{{message.tags}}"> {{message}} </li> 
 						{% endif %}
+						{% if message.tags == 'esgotado_voucher error' %}
+							<li class="alert alert--{{message.tags}}"> {{message}} <i class="fa fa-frown-o" aria-hidden="true"></i></li> 
+						{% endif %}		
 				{% endfor %}
 			</ul>
 	{% endif%}

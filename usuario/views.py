@@ -6,6 +6,7 @@ from django.core.paginator import Paginator
 from administrador.models import Event
 from administrador.forms import EventForm
 from .forms import AdquirirVoucherForm
+from .models import Voucher
 
 # Create your views here.
 def checagem_grupousuario(user):
@@ -43,7 +44,7 @@ def descEvento(request, id):
     return (render(request, 'usuario/desc_evento.html', {'evento' : evento}))
 
 @user_passes_test(checagem_grupousuario, login_url = '/accounts/login', redirect_field_name='')
-def Voucher(request):
+def viewVoucher(request):
     return (render(request, 'usuario/voucher.html'))
 
 @user_passes_test(checagem_grupousuario, login_url = '/accounts/login', redirect_field_name='')
@@ -56,10 +57,14 @@ def adquirirVoucher(request, id):
 
         # Verificar se os dados são válidos
         if form.is_valid():
-            messages.success(request, f'Voucher para o evento {evento.titulo} adquirido com sucesso!', extra_tags='conseguiu_voucher')
-
-            # Redirecionar para a página de sucesso
-            return redirect('/usuario/todos.eventos')
+            #verifica se o numero de ingressos já não acabou
+            if evento.voucher_set.count() >= evento.max_ingressos:
+                messages.error(request, f'Acabaram os vouchers para o evento "{ evento.titulo }" ', extra_tags='esgotado_voucher')
+                return redirect('/usuario/todos.eventos')
+            else:
+                voucher = Voucher.objects.create(usuario=request.user, evento=evento,)
+                messages.success(request, f'Voucher para o evento {evento.titulo} adquirido com sucesso!', extra_tags='conseguiu_voucher')
+                return redirect('/usuario/todos.eventos')
     else:
         # Criar uma instância do form vazio
         form = AdquirirVoucherForm()

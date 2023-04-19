@@ -136,3 +136,35 @@ text-align: center;
 padding: 10px; */
 /* margin-top: auto; 
 }*/
+
+/* Mensagens */
+
+ul.messages {
+padding: 0;
+}
+ul.messages li {
+list-style: none;
+}
+
+.alert {
+padding: 1rem;
+margin-bottom: 1rem;
+border: 1px solid transparent;
+border-radius: .25rem;
+}
+
+.alert--operou_evento {
+color: #155724;
+background-color: #d4edda;
+border-color: #c3e6cb;
+}
+.alert--conseguiu_voucher {
+color: #155724;
+background-color: #d4edda;
+border-color: #c3e6cb;
+}
+.alert--esgotado_voucher {
+color: #801212;
+background-color: #edd4d4;
+border-color: #e6c3c3;
+}

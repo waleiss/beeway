@@ -8,15 +8,16 @@ class Voucher(models.Model):
     evento = models.ForeignKey(Event, on_delete=models.CASCADE)
     codigo = models.CharField(max_length=13, unique=True)
 
-    def generate_random_code():
+    @classmethod
+    def generate_random_code(cls):
         """Generate a random string of letters and digits."""
         return ''.join(random.choices(string.ascii_uppercase + string.digits, k=13))
 
     def save(self, *args, **kwargs):
         if not self.codigo:
             # Generate a unique ticket code
-            codigo = generate_random_code()
+            codigo = self.generate_random_code()
             while Voucher.objects.filter(codigo=codigo).exists():
-                codigo = generate_random_code()
+                codigo = self.generate_random_code()
             self.codigo = codigo
         super().save(*args, **kwargs)

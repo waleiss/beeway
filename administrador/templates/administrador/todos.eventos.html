@@ -20,32 +20,32 @@
 			<button class="botaoAdd"><a href="adicionar_evento" style="text-decoration: none; color: #fff">Adicionar Evento </a></button>
 		</div>
 		
-		{% comment %} Procurando as mensagens de sucesso ao terminar uma operação {% endcomment %}
-		{% if messages %} 
-			<ul class="messages"> 
-				{% for message in messages %} 
-					{% if message.tags == 'operou_evento success' %}
-						<li {% if message.tags %} class="alert alert--{{message.tags}}" {% endif %}> {{message}} </li> 
-					{% endif %}
-				{% endfor %}
-			</ul>
-		{% endif%}
-		
-		<div id="ultimos" class="container">
-			{% for eventos in eventos %}
-			<div class="evento">
-				<h1> 
-					<a style="text-decoration: none; color: #fff" href= "desc_evento/{{eventos.id}}">{{eventos.titulo}}</a>
-					<a style="text-decoration: none; color: #9CCC65" href= "editar_evento/{{eventos.id}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-					<a style="text-decoration: none; color: #FF6347" href= "deletar_evento/{{eventos.id}}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-				</h1> 
-				<div class="container" id="info">
-					<p>{{eventos.local}}</p>
-					<p>{{eventos.data_e_hora}}</p>
-				</div>
-			</div>
+	{% comment %} Procurando as mensagens de sucesso ao terminar uma operação {% endcomment %}
+	{% if messages %} 
+		<ul class="messages"> 
+			{% for message in messages %} 
+				{% if message.tags == 'operou_evento success' %}
+					<li {% if message.tags %} class="alert alert--{{message.tags}}" {% endif %}> {{message}} </li> 
+				{% endif %}
 			{% endfor %}
+		</ul>
+	{% endif%}
+	
+	<div id="ultimos" class="container">
+		{% for eventos in eventos %}
+		<div class="evento">
+			<h1> 
+				<a style="text-decoration: none; color: #fff" href= "desc_evento/{{eventos.id}}">{{eventos.titulo}}</a>
+				<a style="text-decoration: none; color: #9CCC65" href= "editar_evento/{{eventos.id}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+				<a style="text-decoration: none; color: #FF6347" href= "deletar_evento/{{eventos.id}}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+			</h1> 
+			<div class="container" id="info">
+				<p>{{eventos.local}}</p>
+				<p>{{eventos.data_e_hora}}</p>
+			</div>
 		</div>
+		{% endfor %}
+	</div>
 {% comment %} <div style="height: 150px;"></div> {% endcomment %}
 
 {% endblock %}

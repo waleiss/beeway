@@ -16,6 +16,17 @@
 		</a>
 	</div>
 
+	{% comment %} Procurando as mensagens de sucesso ao terminar uma operação {% endcomment %}
+	{% if messages %} 
+		<ul class="messages"> 
+			{% for message in messages %} 
+				{% if message.tags == 'operou_evento success' %}
+					<li {% if message.tags %} class="alert alert--{{message.tags}}" {% endif %}> {{message}} </li> 
+				{% endif %}
+			{% endfor %}
+		</ul>
+	{% endif%}
+
 	<div id="ultimos" class="container">
 		{% for eventos in eventos %}
 		<div class="evento">

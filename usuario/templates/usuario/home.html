@@ -16,6 +16,20 @@
 		</a>
 	</div>
 
+	{% comment %} Procurando as mensagens de sucesso ao terminar uma operação  {% endcomment %}
+	{% if messages %} 
+			<ul class="messages"> 
+				{% for message in messages %} 
+						{% if message.tags == 'conseguiu_voucher success' %}
+							<li class="alert alert--{{message.tags}}"> {{message}} </li> 
+						{% endif %}
+						{% if message.tags == 'esgotado_voucher error' %}
+							<li class="alert alert--{{message.tags}}"> {{message}} <i class="fa fa-frown-o" aria-hidden="true"></i></li> 
+						{% endif %}		
+				{% endfor %}
+			</ul>
+	{% endif%}
+	
 	<div id="ultimos" class="container">
 		{% for eventos in eventos %}
 		<div class="evento">
