@@ -86,7 +86,7 @@ def adicionarEvento(request):
             )
             # Salva o novo evento no banco de dados
             novo_evento.save()
-            messages.info(request, f'Evento "{novo_evento.titulo}" adicionado com sucesso!', extra_tags='success')
+            messages.success(request, f'Evento "{novo_evento.titulo}" adicionado com sucesso!', extra_tags='operou_evento')
             return redirect('todos.eventos')
     else:
         form = EventForm()
@@ -100,7 +100,7 @@ def editarEvento(request, id):
         form = EventForm(request.POST, instance=evento)
         if form.is_valid():
             form.save()
-            messages.info(request, f'Evento "{evento.titulo}" editado com sucesso!', extra_tags='success')
+            messages.success(request, f'Evento "{evento.titulo}" editado com sucesso!', extra_tags='operou_evento')
             return redirect('/administrador/todos.eventos')
         else:
             return(render(request, 'administrador/editevento.html', {'form':form, 'evento':evento}))
@@ -112,7 +112,7 @@ def editarEvento(request, id):
 def deletarEvento(request, id):
     evento = get_object_or_404(Event, pk=id)
     evento.delete()
-    messages.info(request, f'Evento "{evento.titulo}" deletado com sucesso!', extra_tags='success')
+    messages.success(request, f'Evento "{evento.titulo}" deletado com sucesso!', extra_tags='operou_evento')
     
     return redirect('/administrador/todos.eventos')
     

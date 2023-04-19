@@ -19,15 +19,17 @@
 		</form>
 	</div>
 	
-	{% comment %} Procurando as mensagens de sucesso ao terminar uma operação 
+	{% comment %} Procurando as mensagens de sucesso ao terminar uma operação  {% endcomment %}
 	{% if messages %} 
 			<ul class="messages"> 
 				{% for message in messages %} 
-					<li {% if message.tags %} class="alert alert--{{message.tags}}" {% endif %}> {{message}} </li> 
+						{% if message.tags == 'conseguiu_voucher success' %}
+							<li class="alert alert--{{message.tags}}"> {{message}} </li> 
+						{% endif %}
 				{% endfor %}
 			</ul>
 	{% endif%}
-	{% endcomment %}
+	
 	
 	<div id="ultimos" class="container">
 		{% for eventos in eventos %}

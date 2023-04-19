@@ -56,10 +56,10 @@ def adquirirVoucher(request, id):
 
         # Verificar se os dados são válidos
         if form.is_valid():
-            """ messages.success(request, f'Voucher para o evento {evento.titulo} adquirido com sucesso!') """
+            messages.success(request, f'Voucher para o evento {evento.titulo} adquirido com sucesso!', extra_tags='conseguiu_voucher')
 
             # Redirecionar para a página de sucesso
-            return redirect('/usuario/home')
+            return redirect('/usuario/todos.eventos')
     else:
         # Criar uma instância do form vazio
         form = AdquirirVoucherForm()
