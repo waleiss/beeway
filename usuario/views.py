@@ -50,7 +50,11 @@ def verVoucher(request, id):
     voucher = get_object_or_404(Voucher,pk=id)
     evento = voucher.evento
     usuario = voucher.usuario
-    return (render(request, 'usuario/voucher.html', {'voucher' : voucher, 'evento' : evento, 'usuario' : usuario}))
+    if usuario != request.user:
+        messages.error(request, 'Você não possui acesso a esse voucher', extra_tags='esgotado_voucher')
+        return redirect('/usuario/todos.eventos')
+    else:
+        return (render(request, 'usuario/voucher.html', {'voucher' : voucher, 'evento' : evento, 'usuario' : usuario}))
 
 @user_passes_test(checagem_grupousuario, login_url = '/accounts/login', redirect_field_name='')
 def adquirirVoucher(request, id):

@@ -2,10 +2,6 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-body{
-    background-color: #a0acad;
-}
-
 .name_site{
 	margin-top: 2%;
 	text-align: center;
@@ -83,12 +79,31 @@ fieldset{
 	align-items: center;
 }
 
-footer{
-    background-color: #333;
+html{
+	height:100%;
+	box-sizing: border-box;
+}
+body {
+	background-color: #a0acad;
+	margin: 0;
+	min-height: 100%;
+	padding-bottom: 6.74rem;
+	position: relative;
+	box-sizing: inherit;
+}
+
+footer {
+	background-color: #333;
 	color: #fff;
 	text-align: center;
 	padding: 10px;
 	position: absolute;
 	bottom: 0;
-	width: 98%;
+	width: 100%;
+} 
+
+.alert--failed {
+	color: #8d2626;
+	background-color: #dab7ae;
+	border-color: #e6d0cd;
 }

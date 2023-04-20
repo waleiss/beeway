@@ -1,5 +1,7 @@
 from django.contrib.auth.backends import ModelBackend
 from django.contrib.auth import get_user_model
+from django.core.exceptions import ValidationError
+
 """ Arquivo feito para conseguir logar com o e-mail """
 
 class EmailBackend(ModelBackend):
@@ -8,15 +10,9 @@ class EmailBackend(ModelBackend):
         try:
             user = UserModel.objects.get(email=username)
         except UserModel.DoesNotExist:
-            return None
+            raise ValidationError('O usuário não existe.')
 
         if user.check_password(password):
             return user
-        return None
-
-    def get_user(self, user_id):
-        UserModel = get_user_model()
-        try:
-            return UserModel.objects.get(pk=user_id)
-        except UserModel.DoesNotExist:
-            return None
+        else:
+            raise ValidationError('Senha incorreta.')
