@@ -7,5 +7,5 @@ urlpatterns = [
     path('usuario/sobre', views.Sobre, name = 'usuariosobre'),
     path('usuario/desc_evento/<int:id>', views.descEvento, name = 'usuariodesc_evento'),
     path('usuario/adquirir_voucher/<int:id>', views.adquirirVoucher, name = 'usuarioadquirir_voucher'),
-    path('usuario/voucher', views.viewVoucher, name = 'usuariovoucher'),
+    path('usuario/voucher/<int:id>', views.verVoucher, name = 'usuariover_voucher'),
 ]

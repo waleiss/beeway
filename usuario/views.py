@@ -1,4 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib import messages
@@ -8,7 +10,7 @@ from administrador.forms import EventForm
 from .forms import AdquirirVoucherForm
 from .models import Voucher
 
-# Create your views here.
+
 def checagem_grupousuario(user):
     """ se for usuario administrador, redireciona para a pagina de login. """ 
     group = Group.objects.get(name='Usuario')
@@ -44,8 +46,11 @@ def descEvento(request, id):
     return (render(request, 'usuario/desc_evento.html', {'evento' : evento}))
 
 @user_passes_test(checagem_grupousuario, login_url = '/accounts/login', redirect_field_name='')
-def viewVoucher(request):
-    return (render(request, 'usuario/voucher.html'))
+def verVoucher(request, id):
+    voucher = get_object_or_404(Voucher,pk=id)
+    evento = voucher.evento
+    usuario = voucher.usuario
+    return (render(request, 'usuario/voucher.html', {'voucher' : voucher, 'evento' : evento, 'usuario' : usuario}))
 
 @user_passes_test(checagem_grupousuario, login_url = '/accounts/login', redirect_field_name='')
 def adquirirVoucher(request, id):
@@ -64,7 +69,8 @@ def adquirirVoucher(request, id):
             else:
                 voucher = Voucher.objects.create(usuario=request.user, evento=evento,)
                 messages.success(request, f'Voucher para o evento {evento.titulo} adquirido com sucesso!', extra_tags='conseguiu_voucher')
-                return redirect('/usuario/todos.eventos')
+                return HttpResponseRedirect(reverse('usuariover_voucher', args=[voucher.id]))
+
     else:
         # Criar uma instância do form vazio
         form = AdquirirVoucherForm()
