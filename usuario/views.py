@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.utils import timezone
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.models import User, Group
@@ -43,7 +44,8 @@ def Sobre(request):
 @user_passes_test(checagem_grupousuario, login_url = '/accounts/login', redirect_field_name='')
 def descEvento(request, id):
     evento = get_object_or_404(Event, pk=id)
-    return (render(request, 'usuario/desc_evento.html', {'evento' : evento}))
+    agora = timezone.now()
+    return (render(request, 'usuario/desc_evento.html', {'evento' : evento, 'agora' : agora}))
 
 @user_passes_test(checagem_grupousuario, login_url = '/accounts/login', redirect_field_name='')
 def verVoucher(request, id):
@@ -59,6 +61,7 @@ def verVoucher(request, id):
 @user_passes_test(checagem_grupousuario, login_url = '/accounts/login', redirect_field_name='')
 def adquirirVoucher(request, id):
     evento = get_object_or_404(Event, pk=id)
+    agora = timezone.now()
 
     if request.method == 'POST':
         # Criar uma instância do form com os dados submetidos
@@ -69,6 +72,9 @@ def adquirirVoucher(request, id):
             #verifica se o numero de ingressos já não acabou
             if evento.voucher_set.count() >= evento.max_ingressos:
                 messages.error(request, f'Acabaram os vouchers para o evento "{ evento.titulo }" ', extra_tags='esgotado_voucher')
+                return redirect('/usuario/todos.eventos')
+            elif evento.data_e_hora < agora:
+                messages.error(request, f'O evento "{ evento.titulo }" já ocorreu ', extra_tags='esgotado_voucher')
                 return redirect('/usuario/todos.eventos')
             else:
                 voucher = Voucher.objects.create(usuario=request.user, evento=evento,)
