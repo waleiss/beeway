@@ -44,7 +44,7 @@ h1{
 	height: 5%;
 }
 
-@media only screen and (max-width: 1000px) {
+/* @media only screen and (max-width: 1000px) {
 	.container#todos {
 	  width: 25%;
 	}
@@ -55,7 +55,7 @@ a#todos{
 	text-decoration: none;
 	font-size: 20px;
 	margin: 0px auto;
-}
+} */
 
 .container#ultimos{
 	display: grid;
@@ -116,28 +116,6 @@ body {
 	box-sizing: inherit;
 }
 
-
-footer {
-	background-color: #333;
-	color: #fff;
-	text-align: center;
-	padding: 10px;
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-} 
-/* footer {
-position: absolute;
-left: 0;
-bottom: 0;
-width: 100%;
-background-color: #333;
-color: #fff;
-text-align: center;
-padding: 10px; */
-/* margin-top: auto; 
-}*/
-
 /* Mensagens */
 
 ul.messages {
@@ -168,4 +146,37 @@ border-color: #c3e6cb;
 color: #801212;
 background-color: #edd4d4;
 border-color: #e6c3c3;
+}
+
+.button-container {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 2%;
+}
+
+.button-left {
+	background-color: #575757;
+	color: white;
+	padding: 10px 20px;
+	border-radius: 5px;
+	text-decoration: none;
+	margin-top: 2%;
+	margin-left: 30%;
+	width: 15%;
+	height: 8%;
+}
+
+.button-right {
+	background-color: #575757;
+	color: white;
+	padding: 10px 20px;
+	border-radius: 5px;
+	text-decoration: none;
+	float: right;
+	margin-top: 2%;
+	margin-right: 30%;
+	width: 12%;
+	height: 8%;
 }
