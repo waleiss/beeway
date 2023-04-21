@@ -48,9 +48,9 @@ class ExpiryDateField(forms.MultiValueField):
     """
 
     default_error_messages = {
-        'invalid_month': _(u'Please enter a valid month.'),
-        'invalid_year': _(u'Please enter a valid year.'),
-        'date_passed': _(u'This expiry date has passed.'),
+        'invalid_month': _(u'Por favor coloque um mês válido.'),
+        'invalid_year': _(u'Por favor coloque um ano válido.'),
+        'date_passed': _(u'Essa data de validade já passou.'),
     }
 
     def __init__(self, *args, **kwargs):
@@ -104,8 +104,8 @@ class VerificationValueField(forms.CharField):
 
     widget = forms.TextInput(attrs={'maxlength': 4})
     default_error_messages = {
-        'required': _(u'Please enter the three- or four-digit verification code for your credit card.'),
-        'invalid': _(u'The verification value you entered is invalid.'),
+        'required': _(u'Por favor coloque o código de verificação de três ou quatro dígitos para o seu cartão de crédito.'),
+        'invalid': _(u'O código de verificação que você digitou é inválido.'),
     }
 
     def clean(self, value):

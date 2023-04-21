@@ -1,14 +1,31 @@
-{% extends 'base-usuario.html' %}
-
-{% block title %}Voucher{% endblock %}
-
-{% load static %}
-{% block head %}
+<!DOCTYPE html>
+<html>
+<html lang="pt-br"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Voucher</title>
+    {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/voucher.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/forma_ingresso.css' %}">
-{% endblock %}
-    
-{% block content %}
+	<link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/apple-touch-icon.png' %}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon-32x32.png' %}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon-16x16.png' %}">
+	<link rel="manifest" href="{% static 'site.webmanifest' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}">
+
+<body>
+    <header class="no-print">
+        <nav>
+                <ul>
+                    <li><a href="/usuario/home">Home</a></li>
+                    <li><a href="/usuario/todos.eventos">Eventos</a></li>
+                    <li><a href="/usuario/sobre">Sobre</a></li>
+                    <li><a href="/accounts/logout">Sair <i class="fa fa-power-off" aria-hidden="true"></i> </a></li>
+                </ul>
+        </nav>
+    </header>
 
     <h1>Voucher</h1>
     <div class="container" id="ingresso">
@@ -46,14 +63,15 @@
     </div>
 
     <div class="container" id="rodape">
-        <a  id="compartilhar" href="" id="compartilhar">
-            <img id="share" src="{% static 'img/share.png' %}"  alt="Compartilhar">
-            <figcaption id="compartilhar">Compartilhar</figcaption>
-        </a>
-        <a id="baixar" href="" id="baixar">
+        <a id="baixar" href="#" class="no-print" onclick="window.print()" id="baixar">
             <img id="share" src="{% static 'img/baixar.png' %}"  alt="Baixar">
             <figcaption id="baixar">Baixar</figcaption>
         </a>
     </div>
     
-{% endblock %}
+    <footer class="no-print">
+		Beeway
+	</footer>
+
+</body>
+</html>

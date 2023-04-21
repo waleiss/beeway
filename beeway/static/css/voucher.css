@@ -43,7 +43,7 @@ h1{
 }
 
 .container#info{
-	width: 400px;
+	width: 500px;
 	height: 200px;
 	align-items: center;
 	align-content: center;
@@ -61,7 +61,7 @@ h1{
 	align-items: center;
 	background-color: white;
 	display: flex;
-	margin: -100px auto;
+	margin: 0px auto;
 }
 
 img#share{
@@ -114,6 +114,14 @@ a#baixar{
 	justify-content: space-between;
 }
 
+.left#data{
+	margin-top: 20px;
+}
+
+.rigth#data{
+	margin-top: 20px;
+}
+
 .container#local{
 	font-size: 20px;
 	border-bottom: 1px dashed;
@@ -144,6 +152,18 @@ a#baixar{
 	margin-top: 20px;
 }
 
+html{
+	height:100%;
+	box-sizing: border-box;
+}
+body {
+	background-color: white;
+	margin: 0;
+	min-height: 100%;
+	padding-bottom: 6.74rem;
+	position: relative;
+	box-sizing: inherit;
+}
 footer {
 	background-color: #333;
 	color: #fff;
@@ -151,5 +171,27 @@ footer {
 	padding: 10px;
 	position: absolute;
 	bottom: 0;
+	width: 100%;
+} 
+
+/* footer {
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	padding: 10px;
+	position: absolute;
+	bottom: 0;
 	width: 98%;
-  }
+  } */
+
+@media print {
+/* Oculta o cabeçalho e o rodapé da página */
+	@page {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+/* Oculta elementos com a classe "no-print" */
+	.no-print {
+		display: none;
+	}
+}
