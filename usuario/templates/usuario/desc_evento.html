@@ -17,7 +17,8 @@
 			<h4>Data:</h4> {{ evento.data_e_hora|date:"d/m/Y" }}
 			<h4>Hora:</h4> {{ evento.data_e_hora|time:"H:i" }}
 			<h4>Contato do organizador:</h4>{{ evento.contato }}
-			<h4>Máximo de ingressos:</h4>{{ evento.max_ingressos }}
+			<h4>Máximo de vouchers:</h4>{{ evento.max_ingressos }}
+			<h4>Preço do voucher:</h4>R${{ evento.preco }}
 		</p>
 	</div>
 	
@@ -30,7 +31,7 @@
 	{% elif evento.voucher_set.count < evento.max_ingressos %}
 		<nav id="adquirir">
 			<ul>
-				<li><a href="/usuario/adquirir_voucher/{{evento.id}}">Adquirir ingresso</a></li>
+				<li><a href="/usuario/adquirir_voucher/{{evento.id}}">Adquirir voucher</a></li>
 			</ul>
 		</nav>
 	{% else %}

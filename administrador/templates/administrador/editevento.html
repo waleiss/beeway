@@ -34,6 +34,9 @@
 		<label for="max_ingressos">Número máximo de ingressos:</label>
 		<input type="number" min="1" name="max_ingressos" value="{{evento.max_ingressos}}" placeholder="Digite o máximo de pessoas que podem participar do evento">
 
+		<label for="preco">Preço do voucher:</label>
+		<input type="number" min="0.00" name="preco" step="0.01" required placeholder="Digite o preço do voucher">
+
         <input id="submit" type="submit" value="Editar Evento">
 
 	</form>

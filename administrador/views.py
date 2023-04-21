@@ -40,7 +40,7 @@ def rSenha(request):
 
 @user_passes_test(checagem_grupoadmin, login_url = '/accounts/login', redirect_field_name='')
 def Home(request):
-    eventos = Event.objects.order_by('data_e_hora')[:6]
+    eventos = Event.objects.order_by('-criado_em')[:6]
     return (render(request, 'administrador/home.html', {'eventos': eventos}))
 
 @user_passes_test(checagem_grupoadmin, login_url = '/accounts/login', redirect_field_name='')
@@ -49,7 +49,7 @@ def todosEventos(request):
     if search:
         eventos_lista = Event.objects.filter(titulo__icontains=search)
     else:
-        eventos_lista = Event.objects.all().order_by('data_e_hora')
+        eventos_lista = Event.objects.all().order_by('-criado_em')
         
         """ Adicionar isso quando a paginação puder aparecer na tela
         paginator = Paginator(eventos_lista, 12)
@@ -83,6 +83,7 @@ def adicionarEvento(request):
                 descricao=form.cleaned_data['descricao'],
                 contato=form.cleaned_data['contato'],
                 max_ingressos=form.cleaned_data['max_ingressos'],
+                preco=form.cleaned_data['preco'],
             )
             # Salva o novo evento no banco de dados
             novo_evento.save()

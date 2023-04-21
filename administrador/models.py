@@ -10,5 +10,8 @@ class Event(models.Model):
     descricao = models.TextField()
     contato = models.CharField(max_length=150)
     max_ingressos = models.PositiveSmallIntegerField()
+    preco = models.DecimalField(decimal_places=2, max_digits=10)
+    criado_em = models.DateTimeField(auto_now_add=True)
+    
     def __str__(self):
         return self.titulo

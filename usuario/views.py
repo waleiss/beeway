@@ -19,7 +19,7 @@ def checagem_grupousuario(user):
 
 @user_passes_test(checagem_grupousuario, login_url = '/accounts/login', redirect_field_name='')
 def Home(request):
-    eventos = Event.objects.order_by('data_e_hora')[:6]
+    eventos = Event.objects.order_by('-criado_em')[:6]
     return (render(request, 'usuario/home.html', {'eventos': eventos}))
 
 @user_passes_test(checagem_grupousuario, login_url = '/accounts/login', redirect_field_name='')
@@ -28,7 +28,7 @@ def todosEventos(request):
     if search:
         eventos_lista = Event.objects.filter(titulo__icontains=search)
     else:
-        eventos_lista = Event.objects.all().order_by('data_e_hora')
+        eventos_lista = Event.objects.all().order_by('-criado_em')
         
         """ Adicionar isso quando a paginação puder aparecer na tela
         paginator = Paginator(eventos_lista, 12)
