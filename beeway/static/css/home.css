@@ -63,7 +63,7 @@ a#todos{
 	grid-template-rows: repeat(2, 1fr);
 	gap: 5%;
 	row-gap: 10%;
-	margin: 10% 5% 5% 5%;
+	margin: 10% 5% 20% 5%;
 }
 
 .evento{
