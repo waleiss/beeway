@@ -15,3 +15,5 @@ class Event(models.Model):
     
     def __str__(self):
         return self.titulo
+
+User._meta.get_field('email')._unique = True
