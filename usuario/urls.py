@@ -8,4 +8,7 @@ urlpatterns = [
     path('usuario/desc_evento/<int:id>', views.descEvento, name = 'usuariodesc_evento'),
     path('usuario/adquirir_voucher/<int:id>', views.adquirirVoucher, name = 'usuarioadquirir_voucher'),
     path('usuario/voucher/<int:id>', views.verVoucher, name = 'usuariover_voucher'),
+    path('usuario/adicionar_evento', views.adicionarEvento, name = 'usuarioadicionar_evento'),
+    path('usuario/editar_evento/<int:id>', views.editarEvento, name = 'usuarioeditar_evento'),
+    path('usuario/deletar_evento/<int:id>', views.deletarEvento, name = 'usuariodeletar_evento'),
 ]

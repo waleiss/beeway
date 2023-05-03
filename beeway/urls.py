@@ -16,7 +16,7 @@ Including another URLconf
 """ As views de cadastro, raiz e verificação de se o usuario é admin ou usuario estão no app de administrador"""
 from django.contrib import admin
 from django.urls import path, include
-from administrador import views
+from usuario import views
 from django.urls import re_path
 from django.views.generic.base import RedirectView
 
@@ -27,7 +27,6 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('verificador', views.Verificador, name='verificador'),
     path('', views.Raiz, name='raiz'),
-    path('', include('administrador.urls')),
     path('', include('usuario.urls')),
     re_path(r'^favicon\.ico$', RedirectView.as_view(url='/beeway/static/favicon.ico')),
 ]
