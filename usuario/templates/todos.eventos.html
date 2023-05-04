@@ -11,12 +11,13 @@
 {% block content %}
 
 	<h1>Todos os eventos</h1>
-	<div id="y"><p id="search">Pesquisar eventos no site</p></div>
 	<div class="container" id="x">
-		
+		<div id="y"><p id="search">Pesquisar eventos no site</p></div>
 		<form method="GET"> 
-		<input type="text" id="a" placeholder="Pesquisar" name="search" value="{{request.GET.search}}">
+			<input type="text" id="a" placeholder="Pesquisar" name="search" value="{{request.GET.search}}">
 		</form>
+		
+		<button class="botaoAdd"><a href="adicionar_evento" style="text-decoration: none; color: #fff">Adicionar Evento </a></button>
 	</div>
 	
 	{% comment %} Procurando as mensagens de sucesso ao terminar uma operação  {% endcomment %}
@@ -29,6 +30,9 @@
 						{% if message.tags == 'esgotado_voucher error' %}
 							<li class="alert alert--{{message.tags}}"> {{message}} <i class="fa fa-frown-o" aria-hidden="true"></i></li> 
 						{% endif %}		
+						{% if message.tags == 'operou_evento success' %}
+							<li class="alert alert--{{message.tags}}"> {{message}} </li> 
+						{% endif %}		
 				{% endfor %}
 			</ul>
 	{% endif%}
@@ -39,7 +43,7 @@
 		<div class="evento">
 			<h1> 
 				<a style="text-decoration: none; color: #fff" href= "desc_evento/{{eventos.id}}">{{eventos.titulo}}</a>
-				<a style="text-decoration: none; color: #FFA500" href= "adquirir_voucher/{{eventos.id}}"><i class="fa fa-ticket" aria-hidden="true"></i></a>
+				{% if eventos.data_e_hora > agora %}<a style="text-decoration: none; color: #FFA500" href= "adquirir_voucher/{{eventos.id}}"><i class="fa fa-ticket" aria-hidden="true"></i></a>{% endif %}
 			</h1> 
 			<div class="container" id="info">
 				<p>{{eventos.local}}</p>
@@ -50,17 +54,3 @@
 	</div>
 	
 {% endblock %}
-	{% comment %} PAGINAÇÃO PARA DIVIDIR O CONTEUDO EM PAGINAS 
-	<div class="pagination"> 
-		<span class="step-links">
-			{% if eventos.has_previous %}
-				<a href="?page={{eventos.previous_page_number}}"> <i class="fas fa-arrow-left"></i></a>
-			{%endif%}
-			<span class="current">
-				{{ eventos.number }} de {{ eventos.paginator_num_pages }}
-			</span>
-			{% if eventos.has_next %}
-				<a href="?page={{eventos.next_page_number}}"> <i class="fas fa-arrow-right"></i></a>
-			{%endif%}
-		</span>
-	</div> {% endcomment %}

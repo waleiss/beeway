@@ -1,10 +1,11 @@
-#Administrador:
+#Admin Superusuário:
 username: admin
-email: admin@admin.com
+email: admin@gmail.com
 senha: admin
+
 #Usuário:
 username:joao
-email:joao@joao.com
+email:joao@gmail.com
 senha: projetop3
 
 #Cartão de crédito:

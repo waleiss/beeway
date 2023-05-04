@@ -6,7 +6,7 @@ from django.contrib.auth.models import User, Group
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib import messages
 from django.core.paginator import Paginator
-from .forms import AdquirirVoucherForm, EventForm
+from .forms import AdquirirVoucherForm, EventForm, CadastroForm
 from .models import Voucher, Event
 
 #Usuario
@@ -14,17 +14,19 @@ from .models import Voucher, Event
 @login_required
 def Home(request):
     eventos = Event.objects.order_by('-criado_em')[:6]
-    return (render(request, 'home.html', {'eventos': eventos}))
+    agora = timezone.now()
+    return (render(request, 'home.html', {'eventos': eventos, 'agora': agora}))
 
 @login_required
 def todosEventos(request):
+    agora = timezone.now()
     search = request.GET.get('search')
     if search:
         eventos_lista = Event.objects.filter(titulo__icontains=search)
     else:
         eventos_lista = Event.objects.all().order_by('-criado_em')
     
-    return (render(request, 'todos.eventos.html', {'eventos': eventos_lista}))
+    return (render(request, 'todos.eventos.html', {'eventos': eventos_lista, 'agora': agora}))
 
 @login_required
 def Sobre(request):
@@ -94,7 +96,7 @@ def Cadastro(request):
 def rSenha(request):
     return (render(request, 'registration/rSenha.html'))
 
-
+@login_required
 def adicionarEvento(request):
     if request.method == 'POST':
         form = EventForm(request.POST)
@@ -133,7 +135,7 @@ def editarEvento(request, id):
         form = EventForm(instance=evento)
     return(render(request, 'editevento.html', {'form':form, 'evento':evento}))
 
-
+@login_required
 def deletarEvento(request, id):
     evento = get_object_or_404(Event, pk=id)
     evento.delete()
