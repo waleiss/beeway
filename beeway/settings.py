@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'usuario',
-    'administrador',
 ]
 
 MIDDLEWARE = [
@@ -136,6 +135,6 @@ LOGIN_REDIRECT_URL = 'verificador'
 LOGOUT_REDIRECT_URL = '/accounts/login'
 
 AUTHENTICATION_BACKENDS = [
-    'administrador.backends.EmailBackend',
+    'usuario.backends.EmailBackend',
     'django.contrib.auth.backends.ModelBackend',
 ]
