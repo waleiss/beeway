@@ -3,9 +3,14 @@ username: admin
 email: admin@gmail.com
 senha: admin
 
-#Usuário:
+#Usuário 1:
 username:joao
 email:joao@gmail.com
+senha: projetop3
+
+#Usuário 2:
+username:davi
+email:davi@gmail.com
 senha: projetop3
 
 #Cartão de crédito:
