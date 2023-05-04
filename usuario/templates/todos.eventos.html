@@ -30,7 +30,7 @@
 						{% if message.tags == 'esgotado_voucher error' %}
 							<li class="alert alert--{{message.tags}}"> {{message}} <i class="fa fa-frown-o" aria-hidden="true"></i></li> 
 						{% endif %}		
-						{% if message.tags == 'operou_evento success' %}
+						{% if message.tags == 'adicionou_evento success' %}
 							<li class="alert alert--{{message.tags}}"> {{message}} </li> 
 						{% endif %}		
 				{% endfor %}
@@ -43,7 +43,7 @@
 		<div class="evento">
 			<h1> 
 				<a style="text-decoration: none; color: #fff" href= "desc_evento/{{eventos.id}}">{{eventos.titulo}}</a>
-				{% if eventos.data_e_hora > agora %}<a style="text-decoration: none; color: #FFA500" href= "adquirir_voucher/{{eventos.id}}"><i class="fa fa-ticket" aria-hidden="true"></i></a>{% endif %}
+				{% if eventos.data_e_hora > agora and eventos.voucher_set.count < eventos.max_ingressos %}<a style="text-decoration: none; color: #FFA500" href= "adquirir_voucher/{{eventos.id}}"><i class="fa fa-ticket" aria-hidden="true"></i></a>{% endif %}
 			</h1> 
 			<div class="container" id="info">
 				<p>{{eventos.local}}</p>

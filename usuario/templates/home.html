@@ -12,7 +12,8 @@
 <h1>Últimos eventos</h1>
 	<div class="button-container">
 		<a id="todos" href="todos.eventos" class="button-left">Ver todos os eventos</a>
-		<a id="voucher" href="#" class="button-right">Meus Vouchers</a>
+		<a id="voucher" href="#" class="button-center">Meus Vouchers</a>
+		<a id="meus" href="meus.eventos" class="button-right">Ver meus Eventos</a>
 	</div>
 
 	{% comment %} Procurando as mensagens de sucesso ao terminar uma operação  {% endcomment %}
@@ -34,7 +35,7 @@
 		<div class="evento">
 			<h1> 
 				<a style="text-decoration: none; color: #fff"href= "desc_evento/{{eventos.id}}">{{eventos.titulo}}</a>
-				{% if eventos.data_e_hora > agora %}<a style="text-decoration: none; color: #FFA500" href= "adquirir_voucher/{{eventos.id}}"><i class="fa fa-ticket" aria-hidden="true"></i></a>{% endif %}
+				{% if eventos.data_e_hora > agora and eventos.voucher_set.count < eventos.max_ingressos %}<a style="text-decoration: none; color: #FFA500" href= "adquirir_voucher/{{eventos.id}}"><i class="fa fa-ticket" aria-hidden="true"></i></a>{% endif %}
 			</h1>
 			<div class="container" id="info">
 				<p>{{eventos.local}}</p>

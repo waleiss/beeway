@@ -97,6 +97,17 @@ def rSenha(request):
     return (render(request, 'registration/rSenha.html'))
 
 @login_required
+def meusEventos(request):
+    search = request.GET.get('search')
+    
+    if search:
+        eventos_lista = Event.objects.filter(usuario=request.user).filter(titulo__icontains=search)
+    else:
+        eventos_lista = Event.objects.filter(usuario=request.user).order_by('-criado_em')
+    
+    return (render(request, 'meus.eventos.html', {'eventos': eventos_lista}))
+
+@login_required
 def adicionarEvento(request):
     if request.method == 'POST':
         form = EventForm(request.POST)
@@ -113,7 +124,7 @@ def adicionarEvento(request):
             )
             # Salva o novo evento no banco de dados
             novo_evento.save()
-            messages.success(request, f'Evento "{novo_evento.titulo}" adicionado com sucesso!', extra_tags='operou_evento')
+            messages.success(request, f'Evento "{novo_evento.titulo}" adicionado com sucesso!', extra_tags='adicionou_evento')
             return redirect('todos.eventos')
     else:
         form = EventForm()
@@ -122,24 +133,28 @@ def adicionarEvento(request):
 @login_required
 def editarEvento(request, id):
     evento = get_object_or_404(Event, pk=id)
-    
-    if (request.method == 'POST'):
-        form = EventForm(request.POST, instance=evento)
-        if form.is_valid():
-            form.save()
-            messages.success(request, f'Evento "{evento.titulo}" editado com sucesso!', extra_tags='operou_evento')
-            return redirect('todos.eventos')
-        else:
-            return(render(request, 'editevento.html', {'form':form, 'evento':evento}))
+    if evento.usuario != request.user:
+        return redirect('/home')
     else:
-        form = EventForm(instance=evento)
-    return(render(request, 'editevento.html', {'form':form, 'evento':evento}))
+        if (request.method == 'POST'):
+            form = EventForm(request.POST, instance=evento)
+            if form.is_valid():
+                form.save()
+                messages.success(request, f'Evento "{evento.titulo}" editado com sucesso!', extra_tags='operou_evento')
+                return redirect('/meus.eventos')
+            else:
+                return(render(request, 'editevento.html', {'form':form, 'evento':evento}))
+        else:
+            form = EventForm(instance=evento)
+        return(render(request, 'editevento.html', {'form':form, 'evento':evento}))
 
 @login_required
 def deletarEvento(request, id):
     evento = get_object_or_404(Event, pk=id)
-    evento.delete()
-    messages.success(request, f'Evento "{evento.titulo}" deletado com sucesso!', extra_tags='operou_evento')
-    
-    return redirect('todos.eventos')
+    if evento.usuario != request.user:
+        return redirect('home')
+    else:
+        evento.delete()
+        messages.success(request, f'Evento "{evento.titulo}" deletado com sucesso!', extra_tags='operou_evento')
+        return redirect('meus.eventos')
     

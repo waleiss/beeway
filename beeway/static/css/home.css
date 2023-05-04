@@ -164,7 +164,21 @@ border-color: #e6c3c3;
 	text-decoration: none;
 	margin-top: 2%;
 	margin-left: 30%;
-	width: 15%;
+	width: 12%;
+	height: 8%;
+}
+
+.button-center {
+	background-color: #575757;
+	color: white;
+	padding: 10px 20px;
+	border-radius: 5px;
+	text-decoration: none;
+	float: center;
+	margin-top: 2%;
+	margin-left: 6%;
+	margin-right: 6%;
+	width: 12%;
 	height: 8%;
 }
 
