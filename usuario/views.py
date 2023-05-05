@@ -10,12 +10,17 @@ from .forms import AdquirirVoucherForm, EventForm, CadastroForm
 from .models import Voucher, Event
 
 #Usuario
+@login_required
+def Perfil(request):
+    usuario = request.user
+    return (render(request, 'perfil.html', {'usuario': usuario}))
 
 @login_required
 def Home(request):
     eventos = Event.objects.order_by('-criado_em')[:6]
+    usuario = request.user
     agora = timezone.now()
-    return (render(request, 'home.html', {'eventos': eventos, 'agora': agora}))
+    return (render(request, 'home.html', {'eventos': eventos, 'agora': agora, 'usuario': usuario}))
 
 @login_required
 def todosEventos(request):
@@ -45,7 +50,7 @@ def verVoucher(request, id):
     usuario = voucher.usuario
     if usuario != request.user:
         messages.error(request, 'Você não possui acesso a esse voucher', extra_tags='esgotado_voucher')
-        return redirect('/usuario/todos.eventos')
+        return redirect('/todos.eventos')
     else:
         return (render(request, 'voucher.html', {'voucher' : voucher, 'evento' : evento, 'usuario' : usuario}))
 
@@ -97,6 +102,28 @@ def Cadastro(request):
 
 def rSenha(request):
     return (render(request, 'registration/rSenha.html'))
+
+def meusVouchers(request):
+    search = request.GET.get('search')
+
+    if search:
+        vouchers_lista = Voucher.objects.filter(usuario=request.user).filter(evento__titulo__icontains=search)
+    else:
+        vouchers_lista = Voucher.objects.filter(usuario=request.user).order_by('-criado_em')
+
+    return (render(request, 'meus.vouchers.html', {'vouchers': vouchers_lista}))
+
+@login_required
+def eventosEncerrados(request):
+    agora = timezone.now()
+    search = request.GET.get('search')
+
+    if search:
+        eventos_lista = Event.objects.filter(titulo__icontains=search)
+    else:
+        eventos_lista = Event.objects.all().order_by('-criado_em')
+    
+    return (render(request, 'eventos.encerrados.html', {'eventos': eventos_lista, 'agora': agora}))
 
 @login_required
 def meusEventos(request):

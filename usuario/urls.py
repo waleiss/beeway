@@ -12,4 +12,7 @@ urlpatterns = [
     path('adicionar_evento', views.adicionarEvento, name = 'adicionar_evento'),
     path('editar_evento/<int:id>', views.editarEvento, name = 'editar_evento'),
     path('deletar_evento/<int:id>', views.deletarEvento, name = 'deletar_evento'),
+    path('meus.vouchers', views.meusVouchers, name = 'meusvouchers'),
+    path('perfil', views.Perfil, name = 'meuperfil'),
+    path('eventos.encerrados', views.eventosEncerrados, name = 'eventosencerrados'),
 ]

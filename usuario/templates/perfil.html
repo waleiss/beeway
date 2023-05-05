@@ -1,0 +1,19 @@
+{% extends 'base-usuario.html' %}
+
+{% block title %}Minhas informações{% endblock %}
+
+{% load static %}
+{% block head %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/sobre.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Minhas informações</h1>
+        <h3>Nome: </h3><span>{{usuario.first_name}} {{usuario.last_name}}</span>
+        <h3>Email: </h3><span>{{usuario.email}}</span>
+        <h3>Nome do usuário: </h3><span>{{usuario.username}}</span>
+        
+    </div>
+	
+{% endblock %}

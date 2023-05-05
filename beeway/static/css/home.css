@@ -31,6 +31,16 @@ h1{
     margin-top: 3%;
     margin-left: 5%;
 }
+/* Bem vindo usuario */
+h2{
+	margin-top: 3%;
+	margin-right: 5%;
+}
+
+.nomeDoUsuario{
+	display: flex;
+	justify-content: space-between;
+}
 
 .container#todos{
 	background-color: #575757;
@@ -156,24 +166,26 @@ border-color: #e6c3c3;
 .button-container {
 	width: 100%;
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-evenly;
+	gap: 0px;
 	align-items: center;
 	margin-top: 2%;
+	height: 50px;
 }
 
-.button-left {
+.button {
 	background-color: #575757;
 	color: white;
 	padding: 10px 20px;
 	border-radius: 5px;
 	text-decoration: none;
 	margin-top: 2%;
-	margin-left: 30%;
-	width: 12%;
-	height: 8%;
+	margin-left: 10px;
+	width: 10%;
+  	height: 80%;
 }
 
-.button-center {
+/* .button-center {
 	background-color: #575757;
 	color: white;
 	padding: 10px 20px;
@@ -199,3 +211,15 @@ border-color: #e6c3c3;
 	width: 12%;
 	height: 8%;
 }
+.button-right {
+	background-color: #575757;
+	color: white;
+	padding: 10px 20px;
+	border-radius: 5px;
+	text-decoration: none;
+	float: right;
+	margin-top: 2%;
+	margin-right: 30%;
+	width: 12%;
+	height: 8%;
+} */

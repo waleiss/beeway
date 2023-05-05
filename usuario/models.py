@@ -23,6 +23,7 @@ class Voucher(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     evento = models.ForeignKey(Event, on_delete=models.CASCADE)
     codigo = models.CharField(max_length=13, unique=True)
+    criado_em = models.DateTimeField(auto_now_add=True)
 
     @classmethod
     def generate_random_code(cls):

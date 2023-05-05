@@ -1,0 +1,35 @@
+{% extends 'base-usuario.html' %}
+
+{% block title %}Meus Vouchers{% endblock %}
+
+{% load static %}
+{% block head %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/todos.eventos.css' %}">
+{% endblock %}
+
+{% block content %}
+
+	<h1>Meus Vouchers</h1>
+	<div class="container" id="x">
+		<div id="y"><p id="search">Pesquisar eventos no site</p></div>
+		<form method="GET"> 
+			<input type="text" id="a" placeholder="Pesquisar" name="search" value="{{request.GET.search}}">
+		</form>
+	</div>
+	
+	<div id="ultimos" class="container">
+		{% for vouchers in vouchers %}
+		<div class="evento">
+			<h1> 
+				<a style="text-decoration: none; color: #fff" href= "voucher/{{vouchers.id}}">{{vouchers.evento.titulo}}</a>
+			</h1> 
+			<div class="container" id="info">
+				<p>{{vouchers.evento.local}}</p>
+				<p>{{vouchers.evento.data_e_hora}}</p>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+	
+{% endblock %}
