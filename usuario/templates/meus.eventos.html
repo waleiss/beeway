@@ -11,12 +11,14 @@
 {% block content %}	
 	
 	<h1>Eventos criados por você</h1>
-		<div class="container" id="x">
-			<div id="y"><p id="search">Pesquisar eventos que você criou</p></div>
-			<form method="GET"> 
-				<input type="text" id="a" placeholder="Pesquisar" name="search" value="{{request.GET.search}}">
-			</form>
-		</div>
+	<div class="container" id="x">
+		<div id="y"><p id="search">Pesquisar eventos que você criou</p></div>
+		<form method="GET"> 
+			<input type="text" id="a" placeholder="Pesquisar" name="search" value="{{request.GET.search}}">
+		</form>
+		
+		<button class="botaoAdd"><a href="" style="text-decoration: none; color: #fff">Ver ingressos comprados para seus eventos </a></button>
+	</div>
 		
 	{% comment %} Procurando as mensagens de sucesso ao terminar uma operação {% endcomment %}
 	{% if messages %} 
