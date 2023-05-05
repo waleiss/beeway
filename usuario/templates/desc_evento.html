@@ -31,7 +31,7 @@
 	{% elif evento.voucher_set.count < evento.max_ingressos %}
 		<nav id="adquirir">
 			<ul>
-				<li><a href="/usuario/adquirir_voucher/{{evento.id}}">Adquirir voucher</a></li>
+				<li><a href="/adquirir_voucher/{{evento.id}}">Adquirir voucher</a></li>
 			</ul>
 		</nav>
 	{% else %}

@@ -107,3 +107,9 @@ footer {
 	background-color: #dab7ae;
 	border-color: #e6d0cd;
 }
+
+.alert--cadastrou {
+	color: #155724;
+	background-color: #d4edda;
+	border-color: #c3e6cb;
+  }

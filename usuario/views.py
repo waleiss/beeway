@@ -88,6 +88,8 @@ def Cadastro(request):
         form = CadastroForm(request.POST)
         if form.is_valid():
             user = form.save()
+            username = form.cleaned_data['username']
+            messages.success(request, f'Usuário "{username}" cadastrado com sucesso!', extra_tags='cadastrou')
             return redirect('login')
     else:
         form = CadastroForm()
@@ -125,7 +127,7 @@ def adicionarEvento(request):
             # Salva o novo evento no banco de dados
             novo_evento.save()
             messages.success(request, f'Evento "{novo_evento.titulo}" adicionado com sucesso!', extra_tags='adicionou_evento')
-            return redirect('todos.eventos')
+            return redirect('/todos.eventos')
     else:
         form = EventForm()
     return(render(request, 'addevento.html', {'form':form}))
@@ -152,9 +154,9 @@ def editarEvento(request, id):
 def deletarEvento(request, id):
     evento = get_object_or_404(Event, pk=id)
     if evento.usuario != request.user:
-        return redirect('home')
+        return redirect('/home')
     else:
         evento.delete()
         messages.success(request, f'Evento "{evento.titulo}" deletado com sucesso!', extra_tags='operou_evento')
-        return redirect('meus.eventos')
+        return redirect('/meus.eventos')
     
