@@ -19,20 +19,20 @@ def Perfil(request):
 @login_required
 def Home(request):
     agora = timezone.now()
-    #Não aparece os eventos que ja passaram do tempo
-    eventos = Event.objects.filter(data_e_hora__gte=agora).order_by('-criado_em')[:6]
+    #Não aparece os eventos que ja passaram do tempo e nem os esgotados
+    eventos = Event.objects.annotate(num_vouchers=Count('voucher')).filter(Q(data_e_hora__gte=agora) & Q(num_vouchers__lt=F('max_ingressos') )).order_by('-criado_em')[:6]
     usuario = request.user
     return (render(request, 'home.html', {'eventos': eventos, 'agora': agora, 'usuario': usuario}))
 
 @login_required
 def todosEventos(request):
     agora = timezone.now()
-    #Não aparece os eventos que ja passaram do tempo
+    #Não aparece os eventos que ja passaram do tempo e nem os esgotados
     search = request.GET.get('search')
     if search:
-        eventos_lista = Event.objects.filter(data_e_hora__gte=agora).filter(titulo__icontains=search)
+        eventos_lista = Event.objects.annotate(num_vouchers=Count('voucher')).filter(Q(data_e_hora__gte=agora) & Q(num_vouchers__lt=F('max_ingressos'))).filter(titulo__icontains=search)
     else:
-        eventos_lista = Event.objects.filter(data_e_hora__gte=agora).order_by('-criado_em')
+        eventos_lista = Event.objects.annotate(num_vouchers=Count('voucher')).filter(Q(data_e_hora__gte=agora) & Q(num_vouchers__lt=F('max_ingressos') )).order_by('-criado_em')
     
     return (render(request, 'todos.eventos.html', {'eventos': eventos_lista, 'agora': agora}))
 
