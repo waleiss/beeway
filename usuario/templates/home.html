@@ -35,7 +35,10 @@
 		<div class="evento">
 			<h1> 
 				<a style="text-decoration: none; color: #fff"href= "desc_evento/{{eventos.id}}">{{eventos.titulo}}</a>
-				{% if eventos.data_e_hora > agora and eventos.voucher_set.count < eventos.max_ingressos %}<a style="text-decoration: none; color: #FFA500" href= "adquirir_voucher/{{eventos.id}}"><i class="fa fa-ticket" aria-hidden="true"></i></a>{% endif %}
+				{% if eventos.data_e_hora < agora %} <span style="color: #FF002C">(EVENTO ENCERRADO)<i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>
+				{% elif eventos.voucher_set.count >= eventos.max_ingressos %}  <span style="color: #FF002C">(VOUCHERS ESGOTADOS)<i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>
+				{% else %}<a style="text-decoration: none; color: #FFA500" href= "adquirir_voucher/{{eventos.id}}"><i class="fa fa-ticket" aria-hidden="true"></i></a>
+				{% endif %}
 			</h1>
 			<div class="container" id="info">
 				<p>{{eventos.local}}</p>

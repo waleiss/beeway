@@ -63,10 +63,10 @@ def adquirirVoucher(request, id):
             #verifica se o numero de ingressos já não acabou
             if evento.voucher_set.count() >= evento.max_ingressos:
                 messages.error(request, f'Acabaram os vouchers para o evento "{ evento.titulo }" ', extra_tags='esgotado_voucher')
-                return redirect('todos.eventos')
+                return redirect('/todos.eventos')
             elif evento.data_e_hora < agora:
                 messages.error(request, f'O evento "{ evento.titulo }" já ocorreu ', extra_tags='esgotado_voucher')
-                return redirect('todos.eventos')
+                return redirect('/todos.eventos')
             else:
                 voucher = Voucher.objects.create(usuario=request.user, evento=evento,)
                 messages.success(request, f'Voucher para o evento {evento.titulo} adquirido com sucesso!', extra_tags='conseguiu_voucher')
