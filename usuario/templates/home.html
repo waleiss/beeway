@@ -36,7 +36,6 @@
 	
 	<div id="ultimos" class="container">
 		{% for eventos in eventos %}
-		{% if eventos.data_e_hora > agora %}
 		<div class="evento">
 			<h1> 
 				<a style="text-decoration: none; color: #fff" href= "desc_evento/{{eventos.id}}">{{eventos.titulo}}</a>
@@ -49,7 +48,6 @@
 				<p>{{eventos.data_e_hora}}</p>
 			</div>
 		</div>
-		{% endif %}
 		{% endfor %}
 	</div>
 

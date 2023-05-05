@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
+from django.db.models import Q, F, Count
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib import messages
@@ -17,19 +18,21 @@ def Perfil(request):
 
 @login_required
 def Home(request):
-    eventos = Event.objects.order_by('-criado_em')[:6]
-    usuario = request.user
     agora = timezone.now()
+    #Não aparece os eventos que ja passaram do tempo
+    eventos = Event.objects.filter(data_e_hora__gte=agora).order_by('-criado_em')[:6]
+    usuario = request.user
     return (render(request, 'home.html', {'eventos': eventos, 'agora': agora, 'usuario': usuario}))
 
 @login_required
 def todosEventos(request):
     agora = timezone.now()
+    #Não aparece os eventos que ja passaram do tempo
     search = request.GET.get('search')
     if search:
-        eventos_lista = Event.objects.filter(titulo__icontains=search)
+        eventos_lista = Event.objects.filter(data_e_hora__gte=agora).filter(titulo__icontains=search)
     else:
-        eventos_lista = Event.objects.all().order_by('-criado_em')
+        eventos_lista = Event.objects.filter(data_e_hora__gte=agora).order_by('-criado_em')
     
     return (render(request, 'todos.eventos.html', {'eventos': eventos_lista, 'agora': agora}))
 
@@ -117,11 +120,11 @@ def meusVouchers(request):
 def eventosEncerrados(request):
     agora = timezone.now()
     search = request.GET.get('search')
-
+# Count conta o numero de vouchers do evento, depois Q coloca um OU no filtro, e ao mesmo tempo F comparar o numero de vouchers com o max de ingressos
     if search:
-        eventos_lista = Event.objects.filter(titulo__icontains=search)
+        eventos_lista = Event.objects.annotate(num_vouchers=Count('voucher')).filter(Q(data_e_hora__lt=agora) | Q(num_vouchers__gte=F('max_ingressos'))).filter(titulo__icontains=search)
     else:
-        eventos_lista = Event.objects.all().order_by('-criado_em')
+        eventos_lista = Event.objects.annotate(num_vouchers=Count('voucher')).filter(Q(data_e_hora__lt=agora) | Q(num_vouchers__gte=F('max_ingressos'))).order_by('-criado_em')
     
     return (render(request, 'eventos.encerrados.html', {'eventos': eventos_lista, 'agora': agora}))
 
