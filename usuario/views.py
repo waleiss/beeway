@@ -103,9 +103,6 @@ def Cadastro(request):
         form = CadastroForm()
     return (render(request, 'registration/cadastro.html', {'form':form}))
 
-def rSenha(request):
-    return (render(request, 'registration/rSenha.html'))
-
 def meusVouchers(request):
     search = request.GET.get('search')
 

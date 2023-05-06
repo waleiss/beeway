@@ -23,7 +23,6 @@ from django.views.generic.base import RedirectView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/cadastro', views.Cadastro, name = 'cadastro'),
-    path('accounts/rSenha', views.rSenha, name = 'rSenha'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('', views.Raiz, name='raiz'),
     path('', include('usuario.urls')),
