@@ -64,3 +64,9 @@ footer {
 	bottom: 0;
 	width: 98%;
   }
+
+  .alert--failed {
+	color: #8d2626;
+	background-color: #dab7ae;
+	border-color: #e6d0cd;
+}
