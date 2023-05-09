@@ -107,18 +107,18 @@ a#baixar{
 	text-decoration: none;
 }
 
-.container#data{
+.container#data, .container#nome{
 	font-size: 20px;
 	border-bottom: 1px dashed;
 	display: flex;
 	justify-content: space-between;
 }
 
-.left#data{
+.left#data, .left#nome{
 	margin-top: 20px;
 }
 
-.rigth#data{
+.rigth#data, .rigth#nome{
 	margin-top: 20px;
 }
 
@@ -135,6 +135,12 @@ a#baixar{
 
 .rigth#local{
 	margin-top: 20px;
+	max-width: 300px;
+	text-align: center;
+}
+
+.container#codigo, .container#local, .container#data{
+	margin-top: 10px;
 }
 
 .container#codigo{
@@ -172,7 +178,7 @@ footer {
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-} 
+}
 
 /* footer {
 	background-color: #333;
