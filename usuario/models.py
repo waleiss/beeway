@@ -24,6 +24,17 @@ class Voucher(models.Model):
     evento = models.ForeignKey(Event, on_delete=models.CASCADE)
     codigo = models.CharField(max_length=13, unique=True)
     criado_em = models.DateTimeField(auto_now_add=True)
+    
+    STATUS = (
+        (1, 'Unchecked'),
+        (2, 'Checked'),
+    )
+    
+    check_in = models.CharField(
+        max_length=1,
+        choices=STATUS,
+    )
+
 
     @classmethod
     def generate_random_code(cls):

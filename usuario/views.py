@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
-from django.db.models import Q, F, Count
+from django.db.models import Q, F, Count, Value
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib import messages
@@ -51,11 +51,12 @@ def verVoucher(request, id):
     voucher = get_object_or_404(Voucher,pk=id)
     evento = voucher.evento
     usuario = voucher.usuario
-    if usuario != request.user:
+    if (usuario == request.user or evento.usuario == request.user):
+        return (render(request, 'voucher.html', {'voucher' : voucher, 'evento' : evento, 'usuario' : usuario}))
+    else:
         messages.error(request, 'Você não possui acesso a esse voucher', extra_tags='esgotado_voucher')
         return redirect('/todos.eventos')
-    else:
-        return (render(request, 'voucher.html', {'voucher' : voucher, 'evento' : evento, 'usuario' : usuario}))
+       
 
 @login_required
 def adquirirVoucher(request, id):
@@ -186,4 +187,55 @@ def deletarEvento(request, id):
         evento.delete()
         messages.success(request, f'Evento "{evento.titulo}" deletado com sucesso!', extra_tags='operou_evento')
         return redirect('/meus.eventos')
+
+@login_required
+def meusEventosComprados(request):
+    search = request.GET.get('search')
     
+    if search:
+        eventos_lista = Event.objects.annotate(num_vouchers=Count('voucher')).filter(usuario=request.user).filter(num_vouchers__gt=0).filter(titulo__icontains=search)
+    else:
+        eventos_lista = Event.objects.annotate(num_vouchers=Count('voucher')).filter(usuario=request.user).filter(num_vouchers__gt=0).order_by('-criado_em')
+    
+    return (render(request, 'eventos_comprados.html', {'eventos': eventos_lista}))
+
+@login_required
+def listaCompradores(request, id):
+    search = request.GET.get('search')
+    evento = get_object_or_404(Event, pk=id)
+    if evento.usuario != request.user:
+        return redirect('/home')
+    else:
+        if search:
+             vouchers_lista = Voucher.objects.filter(Q(evento=id) & (Q(usuario__first_name__icontains=search) | Q(usuario__last_name__icontains=search)))
+        else:
+            vouchers_lista = Voucher.objects.filter(evento=id).order_by('criado_em')
+    
+        return (render(request, 'lista_compradores.html', {'vouchers': vouchers_lista, 'evento': evento}))
+
+@login_required
+def checkVoucher(request, id):
+    voucher = get_object_or_404(Voucher, pk=id)
+    if voucher.evento.usuario != request.user:
+        return redirect('/home')
+    else:
+        voucher.check_in = '2'
+        voucher.save()
+        messages.success(request, f'Voucher de "{voucher.usuario.first_name}" checado com sucesso!', extra_tags='operou_voucher')
+        
+        url_referencia = request.META.get('HTTP_REFERER')
+        return redirect(url_referencia)
+
+@login_required
+def uncheckVoucher(request, id):
+    voucher = get_object_or_404(Voucher, pk=id)
+    if voucher.evento.usuario != request.user:
+        return redirect('/home')
+    else:    
+        voucher.check_in = '1'
+        voucher.save()
+        messages.success(request, f'Voucher de "{voucher.usuario.first_name}" deschecado com sucesso!', extra_tags='operou_voucher')
+        
+        url_referencia = request.META.get('HTTP_REFERER')
+        return redirect(url_referencia)
+

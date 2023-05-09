@@ -1,0 +1,52 @@
+{% extends 'base-usuario.html' %}
+
+{% block title %}Meus eventos{% endblock %}
+
+{% load static %}
+{% block head %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/todos.eventos.css' %}">
+{% endblock %}
+	
+{% block content %}	
+	
+	<h1>Compradores do seu evento "{{evento.titulo}}"</h1>
+	<div class="container" id="x">
+		<div id="y"><p id="search">Pesquisar compradores do seu evento</p></div>
+		<form method="GET"> 
+			<input type="text" id="a" placeholder="Pesquisar" name="search" value="{{request.GET.search}}">
+		</form>
+		
+	</div>
+
+    {% comment %} Procurando as mensagens de sucesso ao terminar uma operação {% endcomment %}
+	{% if messages %} 
+    <ul class="messages"> 
+        {% for message in messages %} 
+            {% if message.tags == 'operou_voucher success' %}
+                <li {% if message.tags %} class="alert alert--{{message.tags}}" {% endif %}> {{message}} </li> 
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% endif%}
+	
+	<div id="ultimos" class="container">
+		{% for vouchers in vouchers %}
+		<div class="evento">
+			<h1> 
+				<a style="text-decoration: none; color: #fff" href= "/voucher/{{vouchers.id}}">{{vouchers.usuario.first_name}} {{vouchers.usuario.last_name}}</a>
+				{% if vouchers.check_in == '2' %} <span style="text-decoration: none; color: #9CCC65" ><i class="fa fa-check-circle-o" aria-hidden="true"></i></span>
+                {% elif vouchers.check_in == '1' %} <span style="text-decoration: none; color: #FF6347"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
+                {% endif %}
+			</h1> 
+			<div class="container" id="info">
+				<p>Código: <br>{{vouchers.codigo}}</p>
+				{% if vouchers.check_in == '2' %} <p> <a href= "/meus.eventos/uncheck_voucher/{{vouchers.id}}" style="text-decoration: none; color: #FF6347">Desfazer Check-in <i class="fa fa-times-circle" aria-hidden="true"></i> </a></p>
+                {% elif vouchers.check_in == '1' %}<p> <a href= "/meus.eventos/check_voucher/{{vouchers.id}}" style="text-decoration: none; color: #9CCC65">Fazer Check-in <i class="fa fa-check-circle-o" aria-hidden="true"></i></a></p>
+                {% endif %}
+            </div>
+		</div>
+		{% endfor %}
+	</div>
+
+{% endblock %}
