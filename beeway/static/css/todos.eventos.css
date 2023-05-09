@@ -1,0 +1,93 @@
+*{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container#x{
+  display: flex;
+  align-items: center;
+  align-content: center;
+  background-color: white;
+  width: 500px;
+  height: 20px;
+  margin: 0px auto;
+  margin-bottom: 100px;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+input#a{
+  border-radius: 10px;
+  border-width: 1px;
+  width: 300px;
+  height: 25px;
+  background-image: url(../img/busca.png);
+  background-position: 10px center;
+  background-repeat: no-repeat;
+  background-size: 20px;
+  padding-left: 40px;
+}
+
+input#a::placeholder{
+  text-align: center;
+}
+
+div#y{
+  margin-top: 50px;
+  margin-left: 50px;
+  font-size: 20px;
+}
+
+button.botaoAdd {
+  background-color: #575757;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 50px;
+}
+
+/* Mensagens */
+
+ul.messages {
+  padding: 0;
+}
+ul.messages li {
+  list-style: none;
+}
+
+.alert {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+}
+
+.alert--operou_evento {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+.alert--adicionou_evento {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+.alert--conseguiu_voucher {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+.alert--esgotado_voucher {
+  color: #801212;
+  background-color: #edd4d4;
+  border-color: #e6c3c3;
+}
+.alert--operou_voucher {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}

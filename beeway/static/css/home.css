@@ -1,0 +1,225 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+	background-color: #333;
+	color: #fff;
+	padding: 20px;
+	width: 100%;
+}
+
+nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	font-size: 20px;
+	justify-content: space-around;
+}
+
+nav li {
+	margin-right: 20px;
+}
+
+nav a {
+	color: #fff;
+	text-decoration: none;
+}
+
+h1{
+    margin-top: 3%;
+    margin-left: 5%;
+}
+/* Bem vindo usuario */
+h2{
+	margin-top: 3%;
+	margin-right: 5%;
+}
+
+.nomeDoUsuario{
+	display: flex;
+	justify-content: space-between;
+}
+
+.container#todos{
+	background-color: #575757;
+	display: flex;
+	align-items: center;
+	align-content: center;
+	border-radius: 5px;
+	margin-top: 2%;
+	margin-left: 5%;
+	width: 15%;
+	height: 5%;
+}
+
+/* @media only screen and (max-width: 1000px) {
+	.container#todos {
+	  width: 25%;
+	}
+}
+
+a#todos{
+	color: white;
+	text-decoration: none;
+	font-size: 20px;
+	margin: 0px auto;
+} */
+
+.container#ultimos{
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	gap: 5%;
+	row-gap: 10%;
+	margin: 10% 5% 5% 5%;
+	height: auto;
+}
+
+.evento{
+	background-color: #575757;
+	border-radius: 15px;
+	width: auto;
+	height: auto;
+	color: white;
+	display: block;
+}
+
+@media only screen and (max-width: 1000px) {
+	.evento{
+	  width: 100%;
+	}
+	.container#ultimos{
+		margin: 20% 5% 5% 5%;
+	}
+}
+
+h1#name{
+	text-align: center;
+}
+
+.container#info{
+	display: flex;
+	justify-content: space-between;
+	margin: 10px;
+}
+
+p#local{
+	margin-left: 10%;
+}
+
+p#data{
+	margin-right: 10%;
+}
+
+html{
+	height:100%;
+	box-sizing: border-box;
+}
+body {
+	background-color: white;
+	margin: 0;
+	min-height: 100vh;
+	padding-bottom: 6.74rem;
+	position: relative;
+	box-sizing: inherit;
+}
+
+/* Mensagens */
+
+ul.messages {
+padding: 0;
+}
+ul.messages li {
+list-style: none;
+}
+
+.alert {
+padding: 1rem;
+margin-bottom: 1rem;
+border: 1px solid transparent;
+border-radius: .25rem;
+}
+
+.alert--operou_evento {
+color: #155724;
+background-color: #d4edda;
+border-color: #c3e6cb;
+}
+.alert--adicionou_evento {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+.alert--conseguiu_voucher {
+color: #155724;
+background-color: #d4edda;
+border-color: #c3e6cb;
+}
+.alert--esgotado_voucher {
+color: #801212;
+background-color: #edd4d4;
+border-color: #e6c3c3;
+}
+
+.button-container {
+	width: 100%;
+	display: flex;
+	justify-content: space-evenly;
+	gap: 0px;
+	align-items: center;
+	margin-top: 2%;
+	height: 50px;
+}
+
+.button {
+	background-color: #575757;
+	color: white;
+	padding: 10px 20px;
+	border-radius: 5px;
+	text-decoration: none;
+	margin-top: 2%;
+	margin-left: 10px;
+	width: 10%;
+  	height: 80%;
+}
+
+/* .button-center {
+	background-color: #575757;
+	color: white;
+	padding: 10px 20px;
+	border-radius: 5px;
+	text-decoration: none;
+	float: center;
+	margin-top: 2%;
+	margin-left: 6%;
+	margin-right: 6%;
+	width: 12%;
+	height: 8%;
+}
+
+.button-right {
+	background-color: #575757;
+	color: white;
+	padding: 10px 20px;
+	border-radius: 5px;
+	text-decoration: none;
+	float: right;
+	margin-top: 2%;
+	margin-right: 30%;
+	width: 12%;
+	height: 8%;
+}
+.button-right {
+	background-color: #575757;
+	color: white;
+	padding: 10px 20px;
+	border-radius: 5px;
+	text-decoration: none;
+	float: right;
+	margin-top: 2%;
+	margin-right: 30%;
+	width: 12%;
+	height: 8%;
+} */

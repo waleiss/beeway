@@ -1,0 +1,41 @@
+{% extends 'base-usuario.html' %}
+
+{% block title %}Descrição do evento{% endblock %}
+
+{% load static %}
+{% block head %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/desc_evento.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<h1 id="evento">{{evento.titulo}}</h1>
+	<div class="container" id="bloco">
+		<p id="desc">
+			<h4>Descrição:</h4>{{evento.descricao}}
+			<h4>Local:</h4>{{ evento.local }}
+			<h4>Data:</h4> {{ evento.data_e_hora|date:"d/m/Y" }}
+			<h4>Hora:</h4> {{ evento.data_e_hora|time:"H:i" }}
+			<h4>Contato do organizador:</h4>{{ evento.contato }}
+			<h4>Máximo de vouchers:</h4>{{ evento.max_ingressos }}
+			<h4>Preço do voucher:</h4>R${{ evento.preco }}
+		</p>
+	</div>
+	
+	<iframe id="mapaufal" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q={{evento.local}}+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+		<a href="https://www.maps.ie/distance-area-calculator.html"></a>
+	</iframe>
+	
+	{% if evento.data_e_hora <= agora %}
+		<h2 style="text-align: center;"> O evento já ocorreu <i class="fa fa-frown-o" aria-hidden="true"></i></h3>
+	{% elif evento.voucher_set.count < evento.max_ingressos %}
+		<nav id="adquirir">
+			<ul>
+				<li><a href="/adquirir_voucher/{{evento.id}}">Adquirir voucher</a></li>
+			</ul>
+		</nav>
+	{% else %}
+		<h2 style="text-align: center;"> Ingressos esgotados <i class="fa fa-frown-o" aria-hidden="true"></i></h3>
+	{% endif %}
+
+{% endblock %}	

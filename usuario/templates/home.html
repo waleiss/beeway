@@ -1,0 +1,54 @@
+{% extends 'base-usuario.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% load static %}
+{% block head %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="nomeDoUsuario">
+	<h1>Últimos eventos</h1>
+	<h2> Bem-vindo, <a style="text-decoration: none; color: #FFA500" href="perfil">{{usuario.first_name}} <i class="fa fa-user-circle-o" aria-hidden="true"></i></a></h2>
+</div>
+	<div class="button-container">
+		<a id="todos" href="todos.eventos" class="button">Ver todos os eventos</a>
+		<a id="voucher" href="meus.vouchers" class="button">Meus Vouchers</a>
+		<a id="meus" href="meus.eventos" class="button">Ver meus Eventos</a>
+		<a id="encerrados" href="eventos.encerrados" class="button">Ver eventos encerrados</a>
+	</div>
+
+	{% comment %} Procurando as mensagens de sucesso ao terminar uma operação  {% endcomment %}
+	{% if messages %} 
+			<ul class="messages"> 
+				{% for message in messages %} 
+						{% if message.tags == 'conseguiu_voucher success' %}
+							<li class="alert alert--{{message.tags}}"> {{message}} </li> 
+						{% endif %}
+						{% if message.tags == 'esgotado_voucher error' %}
+							<li class="alert alert--{{message.tags}}"> {{message}} <i class="fa fa-frown-o" aria-hidden="true"></i></li> 
+						{% endif %}		
+				{% endfor %}
+			</ul>
+	{% endif%}
+	
+	<div id="ultimos" class="container">
+		{% for eventos in eventos %}
+		<div class="evento">
+			<h1> 
+				<a style="text-decoration: none; color: #fff" href= "desc_evento/{{eventos.id}}">{{eventos.titulo}}</a>
+				{% if eventos.voucher_set.count >= eventos.max_ingressos %}  <span style="color: #FF002C">(VOUCHERS ESGOTADOS)<i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>
+				{% else %}<a style="text-decoration: none; color: #FFA500" href= "adquirir_voucher/{{eventos.id}}"><i class="fa fa-ticket" aria-hidden="true"></i></a>
+				{% endif %}
+			</h1> 
+			<div class="container" id="info">
+				<p>{{eventos.local}}</p>
+				<p>{{eventos.data_e_hora}}</p>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+
+{% endblock %}

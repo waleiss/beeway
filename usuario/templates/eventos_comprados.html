@@ -1,0 +1,36 @@
+{% extends 'base-usuario.html' %}
+
+{% block title %}Seus eventos que foram comprados{% endblock %}
+
+{% load static %}
+{% block head %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/todos.eventos.css' %}">
+{% endblock %}
+	
+{% block content %}	
+	
+	<h1>Ver ingressantes de cada evento criado por você</h1>
+	<div class="container" id="x">
+		<div id="y"><p id="search">Pesquisar seus eventos que foram comprados</p></div>
+		<form method="GET"> 
+			<input type="text" id="a" placeholder="Pesquisar" name="search" value="{{request.GET.search}}">
+		</form>
+		
+	</div>
+	
+	<div id="ultimos" class="container">
+		{% for eventos in eventos %}
+		<div class="evento">
+			<h1> 
+				<a style="text-decoration: none; color: #fff" href= "lista_compradores/{{eventos.id}}">{{eventos.titulo}}</a>
+			</h1> 
+			<div class="container" id="info">
+				<p>Vouchers vendidos: {{eventos.voucher_set.count}}</p>
+				<p>{{eventos.data_e_hora}}</p>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+
+{% endblock %}

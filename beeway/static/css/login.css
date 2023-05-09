@@ -1,0 +1,115 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.name_site{
+	margin-top: 2%;
+	text-align: center;
+	border-radius: 5px;
+	font-size: 30px;
+}
+
+.login-form{
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin: 13px auto;
+	max-width: 400px;
+	padding: 20px;
+	width: 100%;
+	flex-direction: column;
+	display: flex;
+}
+
+h1#titulo{
+    font-size: 24px;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+label{
+    display: block;
+    margin-bottom: 10px;
+}
+
+input#email, input#password{
+    border-radius: 5px;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	font-size: 16px;
+	margin-bottom: 20px;
+	padding: 10px;
+	width: 100%;
+}
+
+input#submit{
+    background-color: #333;
+	border: none;
+	border-radius: 5px;
+	color: #fff;
+	cursor: pointer;
+	font-size: 16px;
+	padding: 10px;
+	width: 100%;
+}
+
+.options{
+    display: flex;
+	flex-wrap: wrap;
+	margin-top: 10px;
+    justify-content: center;
+}
+
+a#esqueceu{
+    color: #4285f4;
+}
+
+a#cadastrar{
+    color: #4285f4;
+}
+
+fieldset{
+    margin-top: 20px;
+}
+
+.checkbox#type{
+    display: flex;
+	flex-direction: column nowrap;
+	margin: 0px 20px 0 0;
+	align-items: center;
+}
+
+html{
+	height:100%;
+	box-sizing: border-box;
+}
+body {
+	background-color: #a0acad;
+	margin: 0;
+	min-height: 100%;
+	padding-bottom: 6.74rem;
+	position: relative;
+	box-sizing: inherit;
+}
+
+footer {
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	padding: 10px;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+} 
+
+.alert--failed {
+	color: #8d2626;
+	background-color: #dab7ae;
+	border-color: #e6d0cd;
+}
+
+.alert--cadastrou {
+	color: #155724;
+	background-color: #d4edda;
+	border-color: #c3e6cb;
+  }

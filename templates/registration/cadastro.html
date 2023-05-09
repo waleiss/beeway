@@ -1,0 +1,57 @@
+{% extends 'registration/base-registration.html' %}
+	
+{% block title %}Cadastro{% endblock %}
+
+{% load static %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/cadastro.css' %}">
+{% endblock %}
+
+{% block content %}
+
+	{% comment %} Printando os erros que acontecerem ao cadastrar {% endcomment %}
+	{% if form.errors %}
+		<div class="alert alert--failed">
+			{% for field, errors in form.errors.items %}
+				<strong>{{ field|title }}:</strong>
+				{% for error in errors %}
+					{{ error }}<br>
+				{% endfor %}
+			{% endfor %}
+		</div>
+	{% endif %}
+
+	<form class="cadastro-form" method="post">
+		{% csrf_token %}
+		<h1>Cadastro</h1>
+		<label for="username">Nome de usuário:</label>
+		<input type="text" id="username" name="username" placeholder="Digite seu nome de usuário">
+
+		<label for="nome">Nome:</label>
+		<input type="text" id="nome" name="first_name" placeholder="Digite seu nome">
+
+		<label for="sobrenome">Sobrenome:</label>
+		<input type="text" id="sobrenome" name="last_name" placeholder="Digite seu sobrenome">
+
+		<label for="email">Email:</label>
+		<input type="email" id="email" name="email" placeholder="Digite seu email">
+
+		<label for="password">Senha:</label>
+		<input type="password" id="password" name="password1" placeholder="Digite uma senha com no minimo 8 caracteres">
+		
+		<label for="password">Confirme sua Senha:</label>
+		<input type="password" id="password" name="password2" placeholder="Digite uma senha com no minimo 8 caracteres">
+	
+
+		<input idd="submit" type="submit" value="Cadastrar">
+
+		<div class="options">
+			<span>Já tem uma conta? <a href="login">Entrar na minha conta</a></span>
+		</div>
+	</form>
+	
+	<footer>
+		Beeway
+	</footer>
+	
+{% endblock %}

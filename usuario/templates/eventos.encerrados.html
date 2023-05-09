@@ -1,0 +1,41 @@
+{% extends 'base-usuario.html' %}
+
+{% block title %}Eventos encerrados{% endblock %}
+
+{% load static %}
+{% block head %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/todos.eventos.css' %}">
+{% endblock %}
+
+{% block content %}
+
+	<h1>Eventos encerrados</h1>
+	<div class="container" id="x">
+		<div id="y"><p id="search">Pesquisar eventos que já passaram/esgotaram</p></div>
+		<form method="GET"> 
+			<input type="text" id="a" placeholder="Pesquisar" name="search" value="{{request.GET.search}}">
+		</form>
+	
+	</div>
+	
+	
+	<div id="ultimos" class="container">
+		{% for eventos in eventos %}
+            <div class="evento">
+                <h1> 
+                    <a style="text-decoration: none; color: #fff" href= "desc_evento/{{eventos.id}}">{{eventos.titulo}}</a>
+                    {% if eventos.data_e_hora < agora %} <span style="color: #FF002C">(EVENTO ENCERRADO)<i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>
+                    {% elif eventos.voucher_set.count >= eventos.max_ingressos %}  <span style="color: #FF002C">(VOUCHERS ESGOTADOS)<i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>
+                    {% else %}<a style="text-decoration: none; color: #FFA500" href= "adquirir_voucher/{{eventos.id}}"><i class="fa fa-ticket" aria-hidden="true"></i></a>
+                    {% endif %}
+                </h1> 
+                <div class="container" id="info">
+                    <p>{{eventos.local}}</p>
+                    <p>{{eventos.data_e_hora}}</p>
+                </div>
+            </div>
+		{% endfor %}
+	</div>
+	
+{% endblock %}

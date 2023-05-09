@@ -1,0 +1,55 @@
+{% extends 'registration/base-registration.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% load static %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+	
+	<div>
+		<div  class="name_site">
+			<h1>Beeway</h1>
+		</div>
+		{% if messages %} 
+				<ul class="messages"> 
+					{% for message in messages %} 
+							{% if message.tags == 'cadastrou success' %}
+								<li class="alert alert--{{message.tags}}"> {{message}} </li> 
+							{% endif %}		
+					{% endfor %}
+				</ul>
+		{% endif%}
+		<div class="login-form">
+			<form method='post'>
+				{% csrf_token %}
+				
+				{% if form.non_field_errors %}
+					<div class="alert alert--failed">{{ form.non_field_errors }} </div>
+				{% endif %}
+				
+				<h1 id="titulo">Login</h1>
+				<label for="username">Email:</label>
+				<input type="email" id="email" name="username" placeholder="Digite seu email">
+		
+				<label for="password">Senha:</label>
+				<input type="password" id="password" name="password" placeholder="Digite sua senha">
+				<input id="submit" type="submit" value="Entrar">
+		
+				<div class="options">
+					<div class="x">
+						<a id="esqueceu" href="/accounts/password_reset"><p id="esqueceu">Esqueceu a senha?</p></a>
+						<span>Não tem uma conta? <a id="cadastrar" href="/accounts/cadastro">Cadastre-se</a></span>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<footer>
+		Beeway
+	</footer>
+	
+{% endblock %}

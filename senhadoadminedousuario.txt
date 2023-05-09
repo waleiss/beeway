@@ -1,0 +1,21 @@
+#Admin Superusuário:
+username: admin
+email: admin@gmail.com
+senha: admin
+
+#Usuário 1:
+username:joao
+email:joao@gmail.com
+senha: projetop3
+
+#Usuário 2:
+username:davi
+email:davi@gmail.com
+senha: projetop3
+
+#Cartão de crédito:
+MARCA : VISA
+NOME : Zulikha Akhtakhanov
+NÚMERO: 4746419045207092
+VALIDADE: 12/2029
+CVV : 2561

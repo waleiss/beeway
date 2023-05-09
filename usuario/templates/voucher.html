@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<html lang="pt-br"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Voucher</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/voucher.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/forma_ingresso.css' %}">
+	<link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/apple-touch-icon.png' %}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon-32x32.png' %}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon-16x16.png' %}">
+	<link rel="manifest" href="{% static 'site.webmanifest' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}">
+
+<body>
+    <header class="no-print">
+        <nav>
+                <ul>
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/todos.eventos">Eventos</a></li>
+                    <li><a href="/sobre">Sobre</a></li>
+                    <li><a href="/accounts/logout">Sair <i class="fa fa-power-off" aria-hidden="true"></i> </a></li>
+                </ul>
+        </nav>
+    </header>
+
+    <h1>Voucher</h1>
+    <div class="container" id="ingresso">
+        <p id="dados"><strong>Ingresso de {{evento.titulo}}</strong></p>
+        <div id="_1" class="forma"></div>
+        <div id="_2" class="forma"></div>
+        <div id="_3" class="forma"></div>
+        <div id="_4" class="forma"></div>
+        <div id="_5" class="forma"></div>
+        <div id="_6" class="forma"></div>
+        <div id="_7" class="forma"></div>
+        <div id="_8" class="forma"></div>
+        <p id="ingresso"><strong>UFAL</strong></p>
+        <div id="right" class="lateral"></div>
+        <div id="left" class="lateral"></div>
+    </div>
+
+    <div class="container" id="info">
+        <div class="container" id="nome">
+            <span class="left" id="nome">Participante</span>
+            <span class="rigth" id="nome">{{usuario.first_name}} {{usuario.last_name}}</span>
+        </div>
+        <div class="container" id="data">
+            <span class="left" id="data">Data e hora</span>
+            <span class="rigth" id="data">{{evento.data_e_hora}}</span>
+        </div>
+        <div class="container" id="local">
+            <span class="left" id="local">Local</span>
+            <span class="rigth" id="local">{{evento.local}}</span>
+        </div>
+        <div class="container" id="codigo">
+            <span class="left" id="codigo">Código</span>
+            <span class="rigth" id="codigo">{{voucher.codigo}}</span>
+        </div>
+    </div>
+
+    <div class="container" id="rodape">
+        <a id="baixar" href="#" class="no-print" onclick="window.print()" id="baixar">
+            <img id="share" src="{% static 'img/baixar.png' %}"  alt="Baixar">
+            <figcaption id="baixar">Baixar</figcaption>
+        </a>
+    </div>
+
+</body>
+</html>

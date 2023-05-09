@@ -1,0 +1,60 @@
+{% extends 'base-usuario.html' %}
+
+{% block title %}Todos os eventos{% endblock %}
+
+{% load static %}
+{% block head %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/todos.eventos.css' %}">
+{% endblock %}
+
+{% block content %}
+
+	<h1>Todos os eventos</h1>
+	<div class="container" id="x">
+		<div id="y"><p id="search">Pesquisar eventos no site</p></div>
+		<form method="GET"> 
+			<input type="text" id="a" placeholder="Pesquisar" name="search" value="{{request.GET.search}}">
+		</form>
+		
+		<button class="botaoAdd"><a href="adicionar_evento" style="text-decoration: none; color: #fff">Adicionar Evento </a></button>
+	</div>
+	
+	{% comment %} Procurando as mensagens de sucesso ao terminar uma operação  {% endcomment %}
+	{% if messages %} 
+			<ul class="messages"> 
+				{% for message in messages %} 
+						{% if message.tags == 'conseguiu_voucher success' %}
+							<li class="alert alert--{{message.tags}}"> {{message}} </li> 
+						{% endif %}
+						{% if message.tags == 'esgotado_voucher error' %}
+							<li class="alert alert--{{message.tags}}"> {{message}} <i class="fa fa-frown-o" aria-hidden="true"></i></li> 
+						{% endif %}		
+						{% if message.tags == 'adicionou_evento success' %}
+							<li class="alert alert--{{message.tags}}"> {{message}} </li> 
+						{% endif %}		
+				{% endfor %}
+			</ul>
+	{% endif%}
+	
+	
+	<div id="ultimos" class="container">
+		{% for eventos in eventos %}
+		{% if eventos.data_e_hora > agora %}
+		<div class="evento">
+			<h1> 
+				<a style="text-decoration: none; color: #fff" href= "desc_evento/{{eventos.id}}">{{eventos.titulo}}</a>
+				{% if eventos.voucher_set.count >= eventos.max_ingressos %}  <span style="color: #FF002C">(VOUCHERS ESGOTADOS)<i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>
+				{% else %}<a style="text-decoration: none; color: #FFA500" href= "adquirir_voucher/{{eventos.id}}"><i class="fa fa-ticket" aria-hidden="true"></i></a>
+				{% endif %}
+			</h1> 
+			<div class="container" id="info">
+				<p>{{eventos.local}}</p>
+				<p>{{eventos.data_e_hora}}</p>
+			</div>
+		</div>
+		{% endif %}
+		{% endfor %}
+	</div>
+	
+{% endblock %}
