@@ -57,7 +57,8 @@ input#submit{
     display: flex;
 	flex-wrap: wrap;
 	margin-top: 10px;
-    justify-content: center;
+	justify-content: center;
+	text-align: center;
 }
 
 a#esqueceu{
@@ -109,10 +110,10 @@ footer {
 }
 
 .alert--cadastrou {
-	color: #0047ab;
-	background-color: #ffffcc;
-	border-color: #c0c487;
+	background-color: #5ef83c;
 	text-align: center;
 	font-weight: bold;
 	font-size: larger;
-  }
+	border-radius: 10px;
+}
+
