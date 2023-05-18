@@ -9,20 +9,21 @@
 
 {% block content %}
 
-	{% comment %} Printando os erros que acontecerem ao cadastrar {% endcomment %}
-	{% if form.errors %}
-		<div class="alert alert--failed">
-			{% for field, errors in form.errors.items %}
-				<strong>{{ field|title }}:</strong>
-				{% for error in errors %}
-					{{ error }}<br>
-				{% endfor %}
-			{% endfor %}
-		</div>
-	{% endif %}
-
 	<form class="cadastro-form" method="post">
 		{% csrf_token %}
+			
+		{% comment %} Printando os erros que acontecerem ao cadastrar {% endcomment %}
+		{% if form.errors %}
+			<div class="alert alert--failed">
+				{% for field, errors in form.errors.items %}
+					<strong>{{ field|title }}:</strong>
+					{% for error in errors %}
+						{{ error }}<br>
+					{% endfor %}
+				{% endfor %}
+			</div>
+		{% endif %}
+		
 		<h1>Cadastro</h1>
 		<label for="username">Nome de usuário:</label>
 		<input type="text" id="username" name="username" placeholder="Digite seu nome de usuário">
