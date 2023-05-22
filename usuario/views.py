@@ -63,24 +63,25 @@ def adquirirVoucher(request, id):
     evento = get_object_or_404(Event, pk=id)
     agora = timezone.now()
 
+    #verifica se o numero de ingressos já não acabou
+    if evento.voucher_set.count() >= evento.max_ingressos:
+        messages.error(request, f'Acabaram os vouchers para o evento "{ evento.titulo }" ', extra_tags='esgotado_voucher')
+        return redirect('/todos.eventos')
+    elif evento.data_e_hora < agora:
+        messages.error(request, f'O evento "{ evento.titulo }" já ocorreu ', extra_tags='esgotado_voucher')
+        return redirect('/todos.eventos')
+
     if request.method == 'POST':
         # Criar uma instância do form com os dados submetidos
         form = AdquirirVoucherForm(request.POST)
 
         # Verificar se os dados são válidos
         if form.is_valid():
-            #verifica se o numero de ingressos já não acabou
-            if evento.voucher_set.count() >= evento.max_ingressos:
-                messages.error(request, f'Acabaram os vouchers para o evento "{ evento.titulo }" ', extra_tags='esgotado_voucher')
-                return redirect('/todos.eventos')
-            elif evento.data_e_hora < agora:
-                messages.error(request, f'O evento "{ evento.titulo }" já ocorreu ', extra_tags='esgotado_voucher')
-                return redirect('/todos.eventos')
-            else:
-                voucher = Voucher.objects.create(usuario=request.user, evento=evento,)
-                messages.success(request, f'Voucher para o evento {evento.titulo} adquirido com sucesso!', extra_tags='conseguiu_voucher')
-                return HttpResponseRedirect(reverse('ver_voucher', args=[voucher.id]))
-
+            voucher = Voucher.objects.create(usuario=request.user, evento=evento,)
+            messages.success(request, f'Voucher para o evento {evento.titulo} adquirido com sucesso!', extra_tags='conseguiu_voucher')
+            return HttpResponseRedirect(reverse('ver_voucher', args=[voucher.id]))
+        else:
+            return (render(request, 'adquirir_voucher.html', {'form': form, 'evento': evento}))
     else:
         # Criar uma instância do form vazio
         form = AdquirirVoucherForm()
@@ -100,6 +101,8 @@ def Cadastro(request):
             username = form.cleaned_data['username']
             messages.success(request, f'Usuário "{username}" cadastrado com sucesso!', extra_tags='cadastrou')
             return redirect('login')
+        else:
+            return (render(request, 'registration/cadastro.html', {'form':form}))
     else:
         form = CadastroForm()
     return (render(request, 'registration/cadastro.html', {'form':form}))

@@ -107,6 +107,7 @@ footer {
 	color: #8d2626;
 	background-color: #dab7ae;
 	border-color: #e6d0cd;
+	border-radius: 5px;
 }
 
 .alert--cadastrou {
@@ -115,5 +116,10 @@ footer {
 	font-weight: bold;
 	font-size: larger;
 	border-radius: 10px;
+	list-style-type: none;
 }
 
+ul.errorlist{
+	list-style-type: none;
+	display: inline-block;
+}

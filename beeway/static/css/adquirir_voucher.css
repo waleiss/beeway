@@ -93,6 +93,7 @@ footer {
 	color: #8d2626;
 	background-color: #dab7ae;
 	border-color: #e6d0cd;
+	border-radius: 5px;
 }
 select{
 	border-radius: 5px;
