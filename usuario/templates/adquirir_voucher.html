@@ -12,26 +12,28 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}">
 </head>
 <body>
-	{% if form.errors %}
-		<div class="alert alert--failed">
-			{% for field, errors in form.errors.items %}
-				<strong>{{ field|title }}:</strong>
-				{% for error in errors %}
-					{{ error }}<br>
-				{% endfor %}
-			{% endfor %}
-		</div>
-	{% endif %}
+	
 	
 	<form class="cadastro-form" method="post">
         {% csrf_token %}
+
+		{% if form.errors %}
+			<div class="alert alert--failed">
+				{% for field, errors in form.errors.items %}
+					{% for error in errors %}
+					{{ error }}<br>
+					{% endfor %}
+				{% endfor %}
+			</div>
+		{% endif %}
+
         <h1>Insira um cartão para o pagamento</h1>
 
 		<label for="nome_titular">Nome do titular:</label>
-		<input type="text" name="nome_titular" placeholder="Digite o nome do titular do cartão">
+		<input type="text" name="nome_titular" value="{{form.nome_titular.value|default_if_none:''}}" placeholder="Digite o nome do titular do cartão">
 
 		<label for="numero_cartao">Número do cartão:</label>
-		<input type="text" name="numero_cartao" placeholder="Digite o número do cartão">
+		<input type="text" name="numero_cartao" value="{{form.numero_cartao.value|default_if_none:''}}" placeholder="Digite o número do cartão">
 
 		<label for="data_validade">Data de validade:</label>
 		{{ form.data_validade.as_widget }}
@@ -39,7 +41,7 @@
 		{% comment %} <input type="text" name="data_validade" placeholder="Digite o mês/ano de validade do cartão"> {% endcomment %}
         
         <label for="cvv">CVV:</label>
-        <input type="text" name="cvv" placeholder="Digite o código de segurança do cartão">
+        <input type="text" name="cvv" {{form.cvv.value|default_if_none:''}} placeholder="Digite o código de segurança do cartão">
 
 		<input id="submit" type="submit" value="Adquirir voucher">
 

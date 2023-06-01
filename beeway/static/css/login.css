@@ -57,7 +57,8 @@ input#submit{
     display: flex;
 	flex-wrap: wrap;
 	margin-top: 10px;
-    justify-content: center;
+	justify-content: center;
+	text-align: center;
 }
 
 a#esqueceu{
@@ -106,10 +107,19 @@ footer {
 	color: #8d2626;
 	background-color: #dab7ae;
 	border-color: #e6d0cd;
+	border-radius: 5px;
 }
 
 .alert--cadastrou {
-	color: #155724;
-	background-color: #d4edda;
-	border-color: #c3e6cb;
-  }
+	background-color: #5ef83c;
+	text-align: center;
+	font-weight: bold;
+	font-size: larger;
+	border-radius: 10px;
+	list-style-type: none;
+}
+
+ul.errorlist{
+	list-style-type: none;
+	display: inline-block;
+}

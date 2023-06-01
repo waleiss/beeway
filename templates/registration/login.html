@@ -13,19 +13,18 @@
 		<div  class="name_site">
 			<h1>Beeway</h1>
 		</div>
-		{% if messages %} 
-				<ul class="messages"> 
-					{% for message in messages %} 
-							{% if message.tags == 'cadastrou success' %}
-								<li class="alert alert--{{message.tags}}"> {{message}} </li> 
-							{% endif %}		
-					{% endfor %}
-				</ul>
-		{% endif%}
 		<div class="login-form">
 			<form method='post'>
 				{% csrf_token %}
-				
+				{% if messages %} 
+					<ul class="messages"> 
+						{% for message in messages %} 
+							{% if message.tags == 'cadastrou success' %}
+								<li class="alert alert--{{message.tags}}"> {{message}} </li> 
+							{% endif %}		
+						{% endfor %}
+				</ul>
+				{% endif%}
 				{% if form.non_field_errors %}
 					<div class="alert alert--failed">{{ form.non_field_errors }} </div>
 				{% endif %}
